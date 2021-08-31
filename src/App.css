@@ -8,8 +8,11 @@
 }
 
 .home,
-.reports,
-.products {
+.activities,
+.heartrate,
+.nutrition,
+.sleep,
+.wellness {
   display: flex;
   height: 90vh;
   align-items: center;
