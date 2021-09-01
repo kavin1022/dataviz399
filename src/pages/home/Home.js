@@ -1,10 +1,11 @@
 import React from "react";
-import Home from "./Home";
+import FeaturedInfo from "../../component/home/FeaturedInfo";
+import "./home.css"
 
 const Home = () => {
     return (
         <div className="home">
-            <h1>Home</h1>
+            <FeaturedInfo/>
         </div>
     )
 }
