@@ -6,4 +6,4 @@ This project is a software application with different dashboard interfaces for i
 
 You can learn more about the requirement and description of this project here:
 
-[https://facebook.github.io/create-react-app/docs/getting-started]
+https://github.com/kavin1022/dataviz399/blob/main/Wearable%20data%20visualization.pdf
