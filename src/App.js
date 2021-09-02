@@ -1,6 +1,7 @@
 import './App.css';
 import React from "react"
 import Navbar from "./component/navbar/Navbar"
+import TopBar from './component/topBar/TopBar';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from './pages/home/Home';
 import Activities from './pages/Activities';
@@ -9,11 +10,12 @@ import Nutrition from './pages/Nutrition';
 import Sleep from './pages/Sleep';
 import Wellness from './pages/Wellness';
 
-//start server with: npm json-server --watch patientData/p01/steps.json --port 8000
+//start server with: npx json-server --watch patientData/p01/steps.json --port 8000
 
 function App() {
 	return (
 		<Router>
+			<TopBar/>
 			<Navbar/>
 			<Switch>
 				<Route path="/" exact component={Home}/>

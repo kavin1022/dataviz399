@@ -1,0 +1,9 @@
+.topBar{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    float: right;
+    height: 50px;
+    margin-top: 25px;
+    margin-right: 22.5px;
+}
