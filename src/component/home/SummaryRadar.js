@@ -3,12 +3,17 @@ import {Radar} from "react-chartjs-2"
 
 const SummaryRadar = () => {
 
+
 	const options = {
-		elements: {
-			line: {
-			  	borderWidth: 3
+		plugins:{
+			legend:{
+				display: true
+			},
+			title:{
+				display: true,
+				text: "Summary"
 			}
-		}
+		},
 	};
 
 

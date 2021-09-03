@@ -1,7 +1,7 @@
-import "./waterRing.css";
+import "./happinessRing.css";
 import {Doughnut} from "react-chartjs-2"
 
-const WaterRing = () => {
+const HappinessRing = () => {
 
 	const options = {
         cutout: 100,
@@ -11,7 +11,7 @@ const WaterRing = () => {
 			},
 			title:{
 				display: true,
-				text: "Water Inatake"
+				text: "Mood"
 			}
 		},
 	};
@@ -19,13 +19,13 @@ const WaterRing = () => {
 
 	const data = {
         labels: [
-            'Water Consumed',
+            'Great :D',
         ],
         datasets: [{
           label: 'My First Dataset',
-          data: [500, 100],
+          data: [800, 100],
           backgroundColor: [
-            '#2e334e',
+            'green',
             '#EFEDFF',
           ],
           hoverOffset: 4
@@ -33,7 +33,7 @@ const WaterRing = () => {
       };
 
 	return(
-		<div className="waterRingWrapper">
+		<div className="moodRingWrapper">
 			<Doughnut data={data} height={40} options={options}/>
 		</div>
 	)
@@ -41,4 +41,4 @@ const WaterRing = () => {
 
 }
 
-export default WaterRing
+export default HappinessRing

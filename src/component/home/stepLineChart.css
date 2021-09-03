@@ -1,10 +1,9 @@
 .lineChartContainer{
-    width: 54.5vw;
+    width: 55vw;
     height: 358px;
     border-radius: 10px;
     cursor: pointer;
-    -webkit-box-shadow: 0px 0px 15px -10px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 15px -10px rgba(0,0,0,0.75);
+
 }
 
 .pickerContainer{
@@ -17,6 +16,7 @@
 .rowTwo{
     margin-left: 30px;
     margin-right: 30px;
+    margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
 }

@@ -6,3 +6,9 @@
     padding-left: 30px;
     padding-top: 30px;
 }
+
+.rowThree{
+    margin: 60px 30px 30px 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
