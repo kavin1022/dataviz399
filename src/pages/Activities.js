@@ -1,4 +1,5 @@
 import React from "react";
+import StaticDatePicker from "../component/home/StaticDatePicker";
 
 const Activities = () => {
     return (
