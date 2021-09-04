@@ -1,5 +1,7 @@
 .home{
-    padding-left: 250px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 280px;
 }
 
 .welcomeMessage{
@@ -7,7 +9,7 @@
     padding-top: 30px;
 }
 
-.rowThree{
+.HomeRowThree{
     margin: 60px 30px 30px 30px;
     display: flex;
     justify-content: space-evenly;

@@ -13,7 +13,7 @@ const Home = () => {
             <FeaturedInfo/>
             <StepLineChart/>
 
-            <div className="rowThree">
+            <div className="HomeRowThree">
                 <HappinessRing/>
                 <WaterRing/>
                 <SummaryRadar/>
