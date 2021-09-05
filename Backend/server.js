@@ -1,27 +1,13 @@
 import express from "express"
 import cors from "cors"
-import dotenv from "dotenv"
-import mongoose from "mongoose"
-import StepRouter from "./route/stepRouter.js"
+import step from "./api/step.route.js"
 
-dotenv.config();
+const app = express()
 
-const app = express();
-const port = process.env.PORT || 8000;
+app.use(cors())
+app.use(express.json())
 
-app.use(cors());
-app.use(express.json());
+app.use("/api/step", step)
+app.use("*", (req, res) => res.status(404).json({ error: "not found"}))
 
-const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
-
-const connection = mongoose.connection;
-connection.once("open", () => {
-    console.log("MongoDB database connection established successfully");
-})
-
-app.use("/step", StepRouter);
-
-app.listen(port, ()=> {
-    console.log(`Server is running on port: ${port}`)
-})
+export default app
