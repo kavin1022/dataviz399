@@ -45,14 +45,14 @@ const StepLineChart = () => {
 	};
 
 	useEffect(() => {
-		fetch("http://localhost:8000/steps")
+		fetch("http://localhost:8000/api/step/getLineChartSteps")
 			.then(res =>{
 				return res.json();
 			})
 			.then(data => {
-				const temp = data.slice(-7)
-				setLabels(temp.map(x => x.dateTime.substring(5)));
-				setStepData(temp.map(x => x.Count));
+				const temp = data.reverse();
+				setLabels(temp.map(x => x.dateTime));
+				setStepData(temp.map(x => x.value));
 				setSteps(temp);
 			})
 	}, [])

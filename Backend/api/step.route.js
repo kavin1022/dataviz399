@@ -3,6 +3,8 @@ import StepController from "./step.controller.js"
 
 const router = express.Router()
 
-router.route("/getStep").get(StepController.getAllSteps)
+router.route("/getSteps").get(StepController.getAllSteps)
+
+router.route("/getLineChartSteps").get(StepController.getLineChartSteps)
 
 export default router

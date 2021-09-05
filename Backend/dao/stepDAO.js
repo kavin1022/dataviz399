@@ -18,7 +18,8 @@ export default class StepDAO {
 
 	static async getAllSteps(req, res, next) {
 		try {
-			let newSteps = await step.find({}).toArray()
+			// find in reverse, the last seven days worth of step data
+			let newSteps = await step.find({}).sort({_id: -1}).limit(7 * 24 * 60).toArray()
 		  	return(newSteps)
 		} catch (e) {
 		  	console.log(`api, ${e}`)
