@@ -7,8 +7,8 @@ import StaticDatePicker from "./StaticDatePicker";
 const StepLineChart = () => {
 
 	const [steps, setSteps] = useState(false);
-	const [labels, setLabels] = useState([]);
-	const [stepData, setStepData] = useState([]);
+	const [labels, setLabels] = useState([""]);
+	const [stepData, setStepData] = useState([0]);
 	const [date, changeDate] = useState(new Date());
 	//const [dateFilter, setDateFilter] = useState();
 
