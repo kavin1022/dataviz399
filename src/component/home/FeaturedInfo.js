@@ -1,15 +1,12 @@
 import "./featuredInfo.css";
 import { useEffect, useState } from "react";
 import * as MdIcon from "react-icons/md";
-import { IconContext } from "react-icons/lib";
+import PercentageChange from "./percentageChange.js"
 
 const FeaturedInfo = (props) => {
-    const [steps, setSteps] = useState(0);
     
     const positiveStyle = {color: "green", ffontSize: "1.4em", marginLeft:"10px", marginTop: "1px"};
     const negativeStyle = {color: "red", fontSize: "1.4em", marginLeft:"10px", marginTop: "1px"};
-
-    
 
 
     const TotalSleepTime = () => {
@@ -35,7 +32,7 @@ const FeaturedInfo = (props) => {
                 <span className="featuredTitle">Exercises Time</span>
                 <div className="featuredExercisesTimeContainer">
                     <span className="featuredExercisesTime">1 Hour 13 Minutes</span>
-                    <span className="featuredExercisesTimePercentageChange">-7%</span>
+                    <span className="featuredExercisesTimePercentageChange">+12%</span>
                     <MdIcon.MdArrowDownward style={negativeStyle}/>
                 </div>
                 <span className="featuredSub">Compared to yesterday</span>
@@ -51,8 +48,7 @@ const FeaturedInfo = (props) => {
                 <span className="featuredTitle">Steps</span>
                 <div className="featuredStepsContainer">
                     <span className="featuredSteps">{props.stepsData[0].value}</span>
-                    <span className="featuredStepsPercentageChange">+16%</span>
-                    <MdIcon.MdArrowUpward style={positiveStyle}/>
+                    <PercentageChange dataBefore = {props.stepsData[1].value} dataAfter = {props.stepsData[0].value}/>
                 </div>
                 <span className="featuredSub">Compared to yesterday</span>
     

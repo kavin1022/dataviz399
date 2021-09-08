@@ -6,31 +6,26 @@ import StepLineChart from "../../component/home/StepLineChart";
 import SummaryRadar from "../../component/home/SummaryRadar";
 import WaterRing from "../../component/home/WaterRing";
 import HappinessRing from "../../component/home/HappinessRing";
+import useFetch from "../../component/useFetch";
 
-const Home = () => {
-    const [stepsData, setStepsData] = useState(null);
+const Home = (props) => {
 
-    useEffect(() => {
-		fetch("http://localhost:8000/api/step/getLineChartSteps")
-			.then(res =>{
-				return res.json();
-			})
-			.then(data => {
-				setStepsData(data);
-			})
-	}, [])
+    const {error, isPending, data} = useFetch("http://localhost:8000/api/step/getLineChartSteps");
 
     return (
         <div className="home">
             <h1 className="welcomeMessage">Welcome back, Yu-en Goh</h1>
-            {stepsData && <FeaturedInfo stepsData={stepsData}/>}
-            <StepLineChart/>
+            {isPending && <div>Loading...</div>}
+            {data && <div>
+                <FeaturedInfo stepsData={data}/>
+                <StepLineChart stepsData={data}/>
 
-            <div className="HomeRowThree">
-                <HappinessRing/>
-                <WaterRing/>
-                <SummaryRadar/>
-            </div>
+                <div className="HomeRowThree">
+                    <HappinessRing/>
+                    <WaterRing/>
+                    <SummaryRadar/>
+                </div>
+            </div>}
         </div>
     )
 }

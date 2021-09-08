@@ -4,11 +4,12 @@ import {Line} from "react-chartjs-2";
 import StaticDatePicker from "./StaticDatePicker";
 
 
-const StepLineChart = () => {
+const StepLineChart = (props) => {
 
 	const [steps, setSteps] = useState(false);
 	const [labels, setLabels] = useState([""]);
 	const [stepData, setStepData] = useState([0]);
+
 	const [date, changeDate] = useState(new Date());
 	//const [dateFilter, setDateFilter] = useState();
 
@@ -45,16 +46,10 @@ const StepLineChart = () => {
 	};
 
 	useEffect(() => {
-		fetch("http://localhost:8000/api/step/getLineChartSteps")
-			.then(res =>{
-				return res.json();
-			})
-			.then(data => {
-				const temp = data.reverse();
-				setLabels(temp.map(x => x.dateTime));
-				setStepData(temp.map(x => x.value));
-				setSteps(temp);
-			})
+		const temp = props.stepsData.reverse();
+		setLabels(temp.map(x => x.dateTime));
+		setStepData(temp.map(x => x.value));
+		setSteps(temp);
 	}, [])
 
 	return(
