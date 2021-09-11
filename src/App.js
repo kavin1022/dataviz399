@@ -13,12 +13,13 @@ import Wellness from './pages/Wellness';
 //start server with: npx json-server --watch patientData/p01/steps.json --port 8000
 
 function App() {
+
 	return (
 		<Router>
 			<TopBar/>
 			<Navbar/>
 			<Switch>
-				<Route path="/" exact component={Home}/>
+				<Route path="/" exact component={Home} />
 				<Route path="/activities" component={Activities}/>
 				<Route path="/heartrate" component={HeartRate}/>
 				<Route path="/nutrition" component={Nutrition}/>
