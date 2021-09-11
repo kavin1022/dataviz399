@@ -4,7 +4,7 @@ import Navbar from "./component/navbar/Navbar"
 import TopBar from './component/topBar/TopBar';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from './pages/home/Home';
-import Activities from './pages/Activities';
+import Activities from "./pages/activities/Activities"
 import HeartRate from './pages/HeartRate';
 import Nutrition from './pages/Nutrition';
 import Sleep from './pages/Sleep';

@@ -25,5 +25,5 @@ export default class StepDAO {
 		  	console.log(`api, ${e}`)
 		  	res.status(500).json({ error: e })
 		}
-	  }
+	}
 }
