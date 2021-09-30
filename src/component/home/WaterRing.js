@@ -25,7 +25,7 @@ const WaterRing = () => {
           label: 'My First Dataset',
           data: [500, 100],
           backgroundColor: [
-            '#2e334e',
+            '#5f75c4',
             '#EFEDFF',
           ],
           hoverOffset: 4

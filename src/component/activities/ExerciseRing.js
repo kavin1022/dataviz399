@@ -30,8 +30,8 @@ const ExerciseRing = () => {
           label: 'Sleep Stages',
           data: [40, 42],
           backgroundColor: [
-            '#C2D076',
-            '#2D5D7B',
+            '#2DAA8C',
+            '#5f75c4'
           ],
           hoverOffset: 7
         }]
@@ -42,7 +42,7 @@ const ExerciseRing = () => {
 
             <div className="totalExercise">
                 <h3 style={{fontSize: "30px", fontWeight: "500", marginTop: "60px"}}>Exercise</h3>
-                <p style={{fontSize: "30px", fontWeight: "500",color: "#060b26", marginTop: "50px"}}>56</p>
+                <p style={{fontSize: "30px", fontWeight: "500",color: "#5f75c4", marginTop: "50px"}}>56</p>
                 <p style={{fontSize: "20px", color: "grey"}}>min today</p>
             </div>
 
