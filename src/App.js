@@ -9,6 +9,7 @@ import HeartRate from './pages/HeartRate';
 import Nutrition from './pages/Nutrition';
 import Sleep from './pages/Sleep';
 import Wellness from './pages/Wellness';
+import PurpleBack from './component/topBar/PurpleBack';
 
 //start server with: npx json-server --watch patientData/p01/steps.json --port 8000
 
@@ -16,6 +17,7 @@ function App() {
 
 	return (
 		<Router>
+			<PurpleBack/>
 			<TopBar/>
 			<Navbar/>
 			<Switch>

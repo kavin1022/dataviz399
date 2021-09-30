@@ -7,7 +7,8 @@ import SummaryRadar from "../../component/home/SummaryRadar";
 import WaterRing from "../../component/home/WaterRing";
 import HappinessRing from "../../component/home/HappinessRing";
 import useFetch from "../../component/useFetch";
-
+import BackgroudGrey from "../../component/topBar/BackgroundGrey";
+import ExerciseHomeCom from "../../component/home/ExerciseHomeCom";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Home = (props) => {
@@ -16,6 +17,7 @@ const Home = (props) => {
 
     return (
         <div className="home">
+             
             {isPending && <>
                               <h1 className="welcomeMessage">Loading...</h1>
                               <div className="loading"><CircularProgress/></div>
@@ -26,9 +28,8 @@ const Home = (props) => {
                 <StepLineChart stepsData={data}/>
 
                 <div className="HomeRowThree">
-                    <HappinessRing/>
+                    <ExerciseHomeCom/>
                     <WaterRing/>
-                    <SummaryRadar/>
                 </div>
             </div>}
         </div>

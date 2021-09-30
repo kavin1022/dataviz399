@@ -11,7 +11,6 @@ export default class StepController {
 
 		const result = Array.from(step.reduce((m, {dateTime, value}) => 
 		m.set(dateTime.substring(0, 10), (m.get(dateTime.substring(0, 10)) || 0) + parseInt(value)), new Map), ([dateTime, value]) => ({dateTime, value}));
-
 		
 		res.json(result)
 	}

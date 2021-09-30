@@ -3,38 +3,35 @@
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
-    margin-top: 40px;
 }
 
 .featuredItem{
     flex: 1;
     margin: 50px 30px;
-    padding: 50px;
-    width: 200px;
+    padding: 45px;
+    width: 280px;
     border-radius: 10px;
     cursor: pointer;
     -webkit-box-shadow: 0px 0px 15px -10px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 15px -10px rgba(0,0,0,0.75);
-    background-color: white;
 }
 
 .featuredTitle{
-    font-size: 25px;
+    font-size: 18px;
+    padding-bottom: 20px;
 }
 
-.featuredExercisesTimeContainer,
-.featuredSleepTimeContainer,
-.featuredStepsContainer{
+.featuredContainer{
     padding: 10px, 0, 10px, 0;
     display: flex;
-    align-items: center;
+    align-items: left;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
-.featuredExercisesTime,
-.featuredSleepTime,
-.featuredSteps{
-    font-size: 20px;
-    font-weight: 600;
+.featuredValue{
+    font-size: 30px;
+    font-weight: 500;
     padding-top: 10px;
     padding-bottom: 10px;
 }

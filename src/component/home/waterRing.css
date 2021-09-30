@@ -1,7 +1,6 @@
 .waterRingWrapper{
-    margin: 50px 30px 30px 30px;
-    width: 400px;
-    height: 400px;
+    margin-right: 60px;
+    width: 300px;
+    height: 300px;
     cursor: pointer;
-
 }

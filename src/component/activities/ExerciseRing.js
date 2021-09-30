@@ -1,4 +1,4 @@
-import "./activitiesCompo.css"
+import "./exerciseRing.css"
 import {Doughnut} from "react-chartjs-2"
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
@@ -54,7 +54,7 @@ const ExerciseRing = () => {
                 <div className="exerciseTabWrapper">
                     <DirectionsRunIcon style={exerciseIconStyleRun}/>
                     <div>
-                        <h3 style={{fontSize: "25px", fontWeight: "500"}}>Running</h3>
+                        <h3 style={{fontSize: "25px", fontWeight: "500"}}>Runing</h3>
                         <p>26 min</p>
                     </div>
                 </div>

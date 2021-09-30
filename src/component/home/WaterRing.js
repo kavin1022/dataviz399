@@ -4,13 +4,13 @@ import {Doughnut} from "react-chartjs-2"
 const WaterRing = () => {
 
 	const options = {
-        cutout: 100,
+        cutout: 80,
 		plugins:{
 			legend:{
 				display: true
 			},
 			title:{
-				display: true,
+				display: false,
 				text: "Water Inatake"
 			}
 		},

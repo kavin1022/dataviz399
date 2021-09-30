@@ -1,3 +1,17 @@
 .activities{
     padding-left: 280px;
 }
+
+.firstRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.secondRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 30px;
+    margin-right: 120px;
+}

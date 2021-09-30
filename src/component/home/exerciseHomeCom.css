@@ -1,0 +1,12 @@
+.exerciseSumWrapper{
+    display: flex;
+    flex-direction: row;
+    height: 300px;
+    width: 900px;
+    cursor: pointer;
+    justify-content: space-evenly;
+    align-items: center;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0,0,0,0.75);
+    background-color: white;
+}

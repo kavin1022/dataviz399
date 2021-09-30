@@ -14,7 +14,7 @@ const Navbar = () => {
                     <li>
                         <div className="placeholder-logo">
                             <Link to="/">
-                                <MdIcon.MdPolymer size="60%"/>
+                                <MdIcon.MdPolymer size="60%" color="#5F6AC4"/>
                             </Link>
                         </div>
                     </li>
