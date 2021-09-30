@@ -10,14 +10,17 @@ import useFetch from "../../component/useFetch";
 import BackgroudGrey from "../../component/topBar/BackgroundGrey";
 import ExerciseHomeCom from "../../component/home/ExerciseHomeCom";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import PurpleBack from "../../component/topBar/PurpleBack";
 
 const Home = (props) => {
 
     const {error, isPending, data} = useFetch("http://localhost:8000/api/step/getLineChartSteps");
 
     return (
+        <>
+        <PurpleBack/>
         <div className="home">
-             
+            
             {isPending && <>
                               <h1 className="welcomeMessage">Loading...</h1>
                               <div className="loading"><CircularProgress/></div>
@@ -33,6 +36,7 @@ const Home = (props) => {
                 </div>
             </div>}
         </div>
+        </>
     )
 }
 
