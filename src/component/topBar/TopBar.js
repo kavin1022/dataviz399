@@ -1,18 +1,20 @@
-import React from "react";
-import { SidebarData } from "../navbar/SidebarData";
+import React, {useEffect, useLocation} from "react";
 import "./topBar.css";
-import * as MdIcon from "react-icons/md";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 
-const TopBar = () => {
-    const profileIcon = {fontSize: "37", cursor: "pointer", color: "white"};
+const TopBar = (props) => {
+    const profileIcon = {fontSize: "45", cursor: "pointer", color: props.color};
     const topBarIcon = {fontSize: "25", marginRight: "10px", cursor: "pointer", color: "white"}
+
+    useEffect(() => {
+        console.log(window.location.pathname);
+        console.log("sup");
+    });
 
     return (
         <div className="topBar">
             <AccountCircleIcon style={profileIcon}/>
-            <NotificationsIcon style={topBarIcon}/>
         </div>
     )
 }

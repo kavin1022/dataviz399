@@ -17,7 +17,7 @@ function App() {
 
 	return (
 		<Router>
-			<TopBar/>
+			
 			<Navbar/>
 			<Switch>
 				<Route path="/" exact component={Home} />
