@@ -7,7 +7,7 @@ import Home from './pages/home/Home';
 import Activities from "./pages/activities/Activities"
 import HeartRate from './pages/HeartRate';
 import Nutrition from './pages/Nutrition';
-import Sleep from './pages/Sleep';
+import Sleep from './pages/Sleep/Sleep';
 import Wellness from './pages/Wellness';
 import PurpleBack from './component/topBar/PurpleBack';
 
