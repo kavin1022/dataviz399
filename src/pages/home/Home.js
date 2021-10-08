@@ -30,7 +30,6 @@ const Home = (props) => {
             {data && <div>
                 <TopBar color="white"/> 
                 <h1 className="welcomeMessage">Welcome back, Yu-en Goh</h1>
-                
                 <FeaturedInfo stepsData={data}/>
                 <StepLineChart stepsData={data}/>
 
