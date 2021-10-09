@@ -12,8 +12,8 @@
 	import Typography from '@mui/material/Typography';
 	import Container from '@mui/material/Container';
 	import { createTheme, ThemeProvider } from '@mui/material/styles';
-	import { Redirect} from 'react-router';
 	import { useHistory } from 'react-router-dom';
+	import axios from "axios";
 
 	function Copyright(props) {
 	return (
@@ -37,11 +37,22 @@
 			event.preventDefault();
 			const data = new FormData(event.currentTarget);
 			// eslint-disable-next-line no-console
-			console.log({
-				email: data.get('email'),
+			const body = {
+				username: data.get('email'),
 				password: data.get('password'),
-			});
-			history.push("/login")
+			}
+			if(body.username && body.password){
+				axios.post("http://localhost:8000/register", body)
+				.then(res => {
+					if (res.data.message == "sucessfull"){
+						console.log(res)
+						alert("Register Successful, Now You Can Login")
+					}else{
+						alert("An Error Occured")
+					}
+					
+				})
+			}
 		};
 
 		return (

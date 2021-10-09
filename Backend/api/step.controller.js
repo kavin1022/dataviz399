@@ -14,4 +14,16 @@ export default class StepController {
 		
 		res.json(result)
 	}
+
+	static async reg(req, res, next) {
+		const user = new User({username: "un", password: "pw"})
+		user.save(err=>{
+			if(err){
+				console.log(err)
+				res.send(err)
+			}else{
+				res.send({message:"sucessfull"})
+			}
+		})
+	}
 }
