@@ -12,8 +12,8 @@
 	import Typography from '@mui/material/Typography';
 	import Container from '@mui/material/Container';
 	import { createTheme, ThemeProvider } from '@mui/material/styles';
-	import { Redirect} from 'react-router';
 	import { useHistory } from 'react-router-dom';
+	import axios from "axios";
 
 	function Copyright(props) {
 	return (
@@ -37,11 +37,23 @@
 			event.preventDefault();
 			const data = new FormData(event.currentTarget);
 			// eslint-disable-next-line no-console
-			console.log({
-				email: data.get('email'),
+			const body = {
+				username: data.get('email'),
 				password: data.get('password'),
-			});
-			history.push("/")
+			}
+			axios.post("http://localhost:8000/api/auth/login", body)
+			.then(res => {
+				console.log(res);
+				if (res.data.message == "login success"){
+					alert("login success")
+					history.push("/")
+				}else if(res.data.message == "wrong credentials"){
+					alert("Incorrect Password")
+				}else{
+					alert("An Error Occured")
+				}
+			})
+			/*history.push("/")*/
 		};
 
 		return (
@@ -98,7 +110,7 @@
 						</Link>
 					</Grid>
 					<Grid item>
-						<Link href="#" variant="body2">
+						<Link href="/register" variant="body2">
 						{"Don't have an account? Sign Up"}
 						</Link>
 					</Grid>

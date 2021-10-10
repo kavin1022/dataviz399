@@ -12,6 +12,7 @@ import Wellness from './pages/Wellness';
 import PurpleBack from './component/topBar/PurpleBack';
 import SignIn from './pages/SignIn';
 import Register from './pages/Register';
+import { Redirect } from 'react-router';
 
 //start server with: npx json-server --watch patientData/p01/steps.json --port 8000
 
@@ -21,6 +22,7 @@ function App() {
 	return (
 		<div>
 			<Router>
+				
 				<Switch>
 					<Route path="/login" exact component={SignIn} />
 					<Route path="/register" exact component={Register} />

@@ -8,7 +8,7 @@ export default class StepDAO {
 			return
 		}
 		try {
-			step = await conn.db(process.env.ATLAS_NS).collection("steps")
+			step = await conn.db("dataviz399").collection("steps")
 		}catch (e) {
 			console.error(
 				`Unable to establish a collection handle in stepDAO: ${e}`,
