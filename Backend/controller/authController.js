@@ -1,4 +1,5 @@
 import User from "../model/user.js"
+import StepDAO from "../dao/stepDAO.js";
 
 export default class authController {
 
@@ -26,6 +27,7 @@ export default class authController {
             if(user){
                if(password === user.password){
                    res.send({message:"login success",user:user})
+                   StepDAO.injectDB();
                }else{
                    res.send({message:"wrong credentials"})
                }

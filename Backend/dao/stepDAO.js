@@ -1,25 +1,36 @@
-import mongodb from "mongodb"
-const ObjectId = mongodb.ObjectID
-let step
+import Step from "../model/step.js"
+import mongoose from "mongoose"
+let step;
+
+
 
 export default class StepDAO {
-  	static async injectDB(conn) {
+  	static async injectDB() {
 		if (step) {
 			return
 		}
-		try {
-			step = await conn.db("dataviz399").collection("steps")
-		}catch (e) {
-			console.error(
-				`Unable to establish a collection handle in stepDAO: ${e}`,
-			)
-		}	
+		let Schema = mongoose.Schema;
+		let m = mongoose.model("p01steps", new Schema({
+			dateTime: {
+				type: Date,
+				required: true
+			},
+			value: {
+				type: Number,
+				required: true
+			}
+		}), "p01steps")
+		m.find({}, (err, data) =>{
+			step = data
+			console.log(data);
+		});
 	}
 
 	static async getAllSteps(req, res, next) {
 		try {
 			// find in reverse, the last seven days worth of step data
-			let newSteps = await step.find({}).sort({_id: -1}).limit(7 * 24 * 60).toArray()
+			let newSteps = step
+			//let newSteps = await step.find({}).sort({_id: -1}).limit(7 * 24 * 60).toArray()
 		  	return(newSteps)
 		} catch (e) {
 		  	console.log(`api, ${e}`)
