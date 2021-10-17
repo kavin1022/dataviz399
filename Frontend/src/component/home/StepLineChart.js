@@ -46,7 +46,7 @@ const StepLineChart = (props) => {
 	};
 
 	useEffect(() => {
-		const temp = props.stepsData.reverse();
+		const temp = props.stepsData.slice(0,10).reverse();
 		setLabels(temp.map(x => x.dateTime));
 		setStepData(temp.map(x => x.value));
 		setSteps(temp);

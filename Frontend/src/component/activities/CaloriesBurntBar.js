@@ -5,10 +5,10 @@ import { Ticks } from "chart.js";
 const CaloriesBurntBar = () => {
 
 	let data = {
-        labels: ["Runing", "Walking"],
+        labels: ["Runing", "Other"],
         axis: "x",
         datasets: [{
-          data: [20, 50],
+          data: [50, 20],
           backgroundColor: [
             '#2DAA8C',
             '#5f75c4'
@@ -63,8 +63,6 @@ const CaloriesBurntBar = () => {
                     <p className="cNumber">550</p>
                     <p className="cSub">Calories Today</p>
                 </div>
-                {/*<h4 style={{fontSize: "20px", fontWeight: "500", marginBottom: "10px"}}>Runing</h4>*/}
-                {/*<h4 style={{fontSize: "20px", fontWeight: "500"}}>Walking</h4>*/}
             </div>
 
             <div className="barWrapper">

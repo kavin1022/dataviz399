@@ -80,7 +80,7 @@
 					required
 					fullWidth
 					id="email"
-					label="Email Address"
+					label="Username"
 					name="email"
 					autoComplete="email"
 					autoFocus
