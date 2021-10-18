@@ -1,0 +1,45 @@
+import mongoose from "mongoose"
+let exercise;
+
+export default class exerciseDAO {
+
+  	static async injectDB(id) {
+		const schemaName = id + "exercise";
+		let Schema = mongoose.Schema;
+
+		let m = mongoose.model(schemaName, new Schema({
+			logId: {type: Number},
+			activityName: {type: String},
+			activityTypeId: {type: Number},
+			activityLevel: {type: Array},
+			averageHeartRate: {type: Number},
+			calories: {type: Number},
+			duration: {type: Number},
+			activeDuration: {type: Number},
+			steps: {type: Number},
+			logType: {type: String},
+			manualValuesSpecified: {type: Object},
+			heartRateZones: {type: Array},
+			lastModified: {type: String},
+			startTime: {type: String},
+			originalStartTime: {type: String},
+			originalDuration: {type: Number},
+			elevationGain: {type: Number},
+			hasGps: {type: Boolean},
+			shouldFetchDetails: {type: Boolean},
+		}), schemaName)
+
+		m.find({}, (err, data) =>{
+			exercise = data
+		});
+	}
+
+	static async getAllExercises(req, res, next) {
+		try {
+		  	return(exercise)
+		} catch (e) {
+		  	console.log(`api, ${e}`)
+		  	res.status(500).json({ error: e })
+		}
+	}
+}

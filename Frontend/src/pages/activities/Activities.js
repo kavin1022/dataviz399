@@ -16,7 +16,6 @@ const Activities = () => {
             <BackgroudGrey/>
             <TopBar color="#5F6AC4"/>
             <div className = "zeroRow">
-                {/*<h1 className="welcomeMessage" style={{color: "black"}}>Good work on staying active!</h1>*/}
                 <DatePickerSelf/>
             </div>
             <div className="firstRow">

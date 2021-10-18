@@ -1,15 +1,10 @@
 import express from "express"
 import cors from "cors"
-import User from "./model/user.js"
-import mongodb from "mongodb"
 import mongoose from "mongoose"
-import stepDAO from "./dao/stepDAO.js"
 
 //routes import
-import step from "./routes/step.js"
+import activities from "./routes/activitiesRoutes.js"
 import auth from "./routes/auth.js"
-
-let Schema = mongoose.Schema;
 
 const port = 8000;
 
@@ -22,10 +17,10 @@ connectDB();
 
 const app = express()
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: true}));
 app.use(cors());
 
-app.use("/api/step", step)
+app.use("/api/activities", activities)
 app.use("/api/auth", auth)
 app.use("*", (req, res) => res.status(404).json({ error: "api not found"}))
 

@@ -1,4 +1,7 @@
 import User from "../model/user.js"
+
+import distanceDAO from "../dao/distanceDAO.js";
+import exerciseDAO from "../dao/exerciseDAO.js";
 import StepDAO from "../dao/stepDAO.js";
 
 export default class authController {
@@ -26,8 +29,12 @@ export default class authController {
         User.findOne({username:username},(err,user)=>{
             if(user){
                if(password === user.password){
-                   res.send({message:"login success",user:user})
-                   StepDAO.injectDB();
+
+                    StepDAO.injectDB(user.username);
+                    exerciseDAO.injectDB(user.username);
+                    distanceDAO.injectDB(user.username);
+
+                   res.send({message:"login success",user:user});
                }else{
                    res.send({message:"wrong credentials"})
                }

@@ -1,11 +1,10 @@
-import Step from "../model/step.js"
 import mongoose from "mongoose"
-let step;
+let distance;
 
-export default class StepDAO {
+export default class distanceDAO {
 
   	static async injectDB(id) {
-		const schemaName = id + "steps";
+		const schemaName = id + "distances";
 		let Schema = mongoose.Schema;
 		let m = mongoose.model(schemaName, new Schema({
 			dateTime: {
@@ -18,14 +17,14 @@ export default class StepDAO {
 			}
 		}), schemaName)
 		m.find({}, (err, data) =>{
-			step = data
+			distance = data
 		});
 	}
 
-	static async getAllSteps(req, res, next) {
+	static async getAllDistances(req, res, next) {
 		try {
-			let newSteps = step
-		  	return(newSteps)
+			let newdistances = distance
+		  	return(newdistances)
 		} catch (e) {
 		  	console.log(`api, ${e}`)
 		  	res.status(500).json({ error: e })
