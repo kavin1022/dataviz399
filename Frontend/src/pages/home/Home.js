@@ -15,7 +15,7 @@ import TopBar from "../../component/topBar/TopBar";
 
 const Home = (props) => {
 
-    const {error, isPending, data} = useFetch("http://localhost:8000/api/step/getLineChartSteps");
+    const {error, isPending, data} = useFetch("http://localhost:8000/api/activities/getLineChartSteps");
 
     return (
         <>

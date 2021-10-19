@@ -6,10 +6,12 @@ import CaloriesBurntBar from "../../component/activities/CaloriesBurntBar";
 import BackgroudGrey from "../../component/topBar/BackgroundGrey";
 import DatePickerSelf from "../../component/topBar/DatePickerSelf";
 import TopBar from "../../component/topBar/TopBar";
+import useFetch from "../../component/useFetch";
 
 
 const Activities = () => {
 
+    const {error, isPending, data} = useFetch("http://localhost:8000/api/step/getLineChartSteps");
     
     return (
         <div className="activities">

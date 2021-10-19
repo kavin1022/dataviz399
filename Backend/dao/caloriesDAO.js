@@ -1,24 +1,29 @@
 import mongoose from "mongoose"
-let calories;
+let calories, m;
 
 export default class caloriesDAO {
 
-  	static async injectDB(id) {
-		const schemaName = id + "calories";
+	static async injectDB(id) {
+		const schemaName = id + "caloriess";
 		let Schema = mongoose.Schema;
-		let m = mongoose.model(schemaName, new Schema({
-			dateTime: {
-				type: Date,
-				required: true
-			},
-			value: {
-				type: Number,
-				required: true
-			}
-		}), schemaName)
+		try{
+			m = mongoose.model(schemaName);
+		}catch(error){
+			m = mongoose.model(schemaName, new Schema({
+				dateTime: {
+					type: Date,
+					required: true
+				},
+				value: {
+					type: Number,
+					required: true
+				}
+			}), schemaName)
+		}
 		m.find({}, (err, data) =>{
 			calories = data
 		});
+		return true
 	}
 
 	static async getAllCalories(req, res, next) {
