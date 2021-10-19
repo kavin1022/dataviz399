@@ -20,14 +20,8 @@ export default class StepDAO {
 				}
 			}), schemaName)
 		}
-		m.find({}, (err, data) =>{
-			step = data
-		})
-		while(!step){
-			console.log(step);
-		}
-		return true
-		
+		step = await m.find();
+		return true;
 	}
 
 	static async getAllSteps(req, res, next) {

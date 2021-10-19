@@ -20,9 +20,7 @@ export default class distanceDAO {
 				}
 			}), schemaName)
 		}
-		m.find({}, (err, data) =>{
-			distance = data
-		});
+		distance = await m.find();
 		return true
 	}
 

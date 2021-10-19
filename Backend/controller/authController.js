@@ -27,17 +27,18 @@ export default class authController {
 
     static async login(req, res, next) {
         const {username,password} =req.body;
+        
         User.findOne({username:username},(err,user)=>{
             if(user){
                if(password === user.password){
-                    StepDAO.injectDB(user.username)
-                    .then(hey =>
-                        console.log("sup")
-                    )
+                    const a = StepDAO.injectDB(user.username);
                     const b = exerciseDAO.injectDB(user.username);
                     const c = distanceDAO.injectDB(user.username);
                     const d = caloriesDAO.injectDB(user.username);
-                   res.send({message:"login success",user:user});
+                    Promise.all([a, b, c, d])
+                    .then(() => {
+                        res.send({message:"login success",user:user});
+                    })
                }else{
                    res.send({message:"wrong credentials"})
                }
@@ -47,5 +48,4 @@ export default class authController {
         })
     }
         
-
 }

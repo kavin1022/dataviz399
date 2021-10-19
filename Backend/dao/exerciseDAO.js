@@ -32,10 +32,8 @@ export default class exerciseDAO {
 			}), schemaName)
 		}
 
-		m.find({}, (err, data) =>{
-			exercise = data
-		});
-		return true
+		exercise = await m.find();
+		return true;
 	}
 
 	static async getAllExercises(req, res, next) {

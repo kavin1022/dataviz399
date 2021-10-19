@@ -20,10 +20,8 @@ export default class caloriesDAO {
 				}
 			}), schemaName)
 		}
-		m.find({}, (err, data) =>{
-			calories = data
-		});
-		return true
+		calories = await m.find();
+		return true;
 	}
 
 	static async getAllCalories(req, res, next) {
