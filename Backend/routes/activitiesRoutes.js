@@ -5,8 +5,10 @@ const router = express.Router()
 
 router.route("/GetLineChartSteps").get(ActivitiesController.getLineChartSteps)
 
-router.route("/GetAllExercises").get(ActivitiesController.getAllExercises)
+router.route("/GetDailyDistance").get(ActivitiesController.getDailyDistance)
 
-router.route("/GetAllDistance").get(ActivitiesController.getDailyDistance)
+router.route("/GetAllExerciseDuration/p/").get(ActivitiesController.getAllExerciseDuration)
+
+router.route("/GetDailyCalories").get(ActivitiesController.getDailyCalories)
 
 export default router

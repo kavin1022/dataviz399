@@ -1,10 +1,10 @@
 import mongoose from "mongoose"
-let step;
+let calories;
 
-export default class StepDAO {
+export default class caloriesDAO {
 
   	static async injectDB(id) {
-		const schemaName = id + "steps";
+		const schemaName = id + "calories";
 		let Schema = mongoose.Schema;
 		let m = mongoose.model(schemaName, new Schema({
 			dateTime: {
@@ -17,14 +17,13 @@ export default class StepDAO {
 			}
 		}), schemaName)
 		m.find({}, (err, data) =>{
-			step = data
+			calories = data
 		});
 	}
 
-	static async getAllSteps(req, res, next) {
+	static async getAllCalories(req, res, next) {
 		try {
-			let newSteps = step
-		  	return(newSteps)
+		  	return calories
 		} catch (e) {
 		  	console.log(`api, ${e}`)
 		  	res.status(500).json({ error: e })

@@ -4,7 +4,7 @@ let exercise;
 export default class exerciseDAO {
 
   	static async injectDB(id) {
-		const schemaName = id + "exercise";
+		const schemaName = id + "exercises";
 		let Schema = mongoose.Schema;
 
 		let m = mongoose.model(schemaName, new Schema({

@@ -3,6 +3,7 @@ import User from "../model/user.js"
 import distanceDAO from "../dao/distanceDAO.js";
 import exerciseDAO from "../dao/exerciseDAO.js";
 import StepDAO from "../dao/stepDAO.js";
+import caloriesDAO from "../dao/caloriesDAO.js";
 
 export default class authController {
 
@@ -33,6 +34,7 @@ export default class authController {
                     StepDAO.injectDB(user.username);
                     exerciseDAO.injectDB(user.username);
                     distanceDAO.injectDB(user.username);
+                    caloriesDAO.injectDB(user.username);
 
                    res.send({message:"login success",user:user});
                }else{
