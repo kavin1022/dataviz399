@@ -16,46 +16,34 @@ const Activities = () => {
     const [exerciseValue, setExerciseValue] = useState();
     const [caloriesValue, setCaloriesValue] = useState();
 
-    //const {error, isPending, stepData} = useFetch("http://localhost:8000/api/activities/getLineChartSteps");
+    const update = (arr) => {
+        console.log(arr);
+        let sum = 0;
+        for (let i=0; i<arr.length; i++){
+            if (arr[i].dateTime.substring(0,10) == date){
+                sum += arr[i].value;
+            }
+        }
+        return sum;
+    }
     var requestOptions = {
         method: 'GET',
         redirect: 'follow'
     };
 
     useEffect(() => {
-        fetch("http://localhost:8000/api/activities/getLineChartSteps", requestOptions).then(response => response.json())
-        .then(result => {
-            let step = 0;
-            for (let i=0; i<result.length; i++){
-                if (result[i].dateTime == date){
-                    step = result[i].value;
-                    break;
-                }
-            }
-            setStepValue(step);
-        })
-        fetch("http://localhost:8000/api/activities/getdailydistance", requestOptions).then(response => response.json())
-        .then(result => {
-            let distance = 0;
-            for (let i=0; i<result.length; i++){
-                if (result[i].dateTime == date){
-                    distance = Math.round(result[i].value * 100)/100;
-                    break;
-                }
-            }
-            setDistanceValue(distance);
-        })
-        fetch("http://localhost:8000/api/activities/getAllExerciseDuration/p?day=" + date, requestOptions).then(response => response.json())
-        .then(result => {
-            let sum = 0;
-            for (let i=0; i<result.length; i++){
-                sum += result[i].duration;
-            }
-            setExerciseValue(Math.round(sum))
-        })
-        fetch("http://localhost:8000/api/activities/GetDailyCalories", requestOptions).then(response => response.json())
-        .then(result => {
-            setCaloriesValue(Math.round(result[0].value * 100)/100)
+        const stepPromise = fetch("http://localhost:8000/api/activities/getLineChartSteps", requestOptions).then(response => response.json()).then(res => {return res})
+        const disPromise = fetch("http://localhost:8000/api/activities/getdailydistance", requestOptions).then(response => response.json()).then(res => {return res})
+        const exerDurPromise = fetch("http://localhost:8000/api/activities/getAllExerciseDuration/p?day=" + date, requestOptions).then(response => response.json()).then(res => {return res})
+        const caloriesPromise = fetch("http://localhost:8000/api/activities/GetDailyCalories", requestOptions).then(response => response.json()).then(res => {return res})
+
+        const proList = [stepPromise, disPromise, exerDurPromise, caloriesPromise]
+        Promise.all(proList)
+        .then(async() => {
+            setStepValue(update(await stepPromise));
+            setDistanceValue(Math.round(update(await disPromise) * 100)/100);
+            setExerciseValue(Math.round(update(await exerDurPromise) * 100)/100);
+            setCaloriesValue(Math.round(update(await caloriesPromise) * 100)/100);
         })
     }, [date]);
       

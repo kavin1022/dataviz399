@@ -33,7 +33,7 @@ export default class ActivitiesController {
 				if (x.startTime.substring(0, 10) == req.query["day"]){
 					exerciseList.push({
 						activityName: x.activityName, 
-						duration: x.duration/60000, 
+						value: x.duration/60000, 
 						dateTime: x.startTime,
 						calories: x.calories
 					})

@@ -15,7 +15,6 @@ const DatePickerSelf = (props) => {
                     format="YYYY-MM-DD"
                     onChange={(newValue) => {
                         props.setDate(format(newValue, "yyyy-MM-dd")); 
-                        console.log(format(newValue, "yyyy-MM-dd"));
                     }}
                     renderInput={(params) => <TextField {...params} />}
                 />
