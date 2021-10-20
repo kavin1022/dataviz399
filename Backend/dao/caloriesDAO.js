@@ -4,7 +4,7 @@ let calories, m;
 export default class caloriesDAO {
 
 	static async injectDB(id) {
-		const schemaName = id + "caloriess";
+		const schemaName = id + "calories";
 		let Schema = mongoose.Schema;
 		try{
 			m = mongoose.model(schemaName);

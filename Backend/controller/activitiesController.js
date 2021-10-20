@@ -55,6 +55,7 @@ export default class ActivitiesController {
 	static async getDailyCalories(req, res, next) {
 		await caloriesDAO.getAllCalories()
 		.then(days => {
+			console.log(days)
 			const result = Array.from(days.reduce((m, {dateTime, value}) => 
 			m.set(dateTime.toISOString().substring(0, 10), (m.get(dateTime.toISOString().substring(0, 10)) || 0) + parseInt(value)), new Map), ([dateTime, value]) => ({dateTime, value}));
 			res.send(result.reverse())

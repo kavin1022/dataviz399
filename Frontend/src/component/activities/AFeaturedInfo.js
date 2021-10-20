@@ -9,9 +9,9 @@ const AFeaturedInfo = (props) => {
     
             
             <div className="featuredContainer">
-                <span className="featuredTitle">Steps</span>
-                <span className="featuredValue">2328</span>
-                <span className="featuredSub">steps today</span>
+                <span className="featuredTitle">{props.title}</span>
+                <span className="featuredValue">{props.value}</span>
+                <span className="featuredSub">{props.sub}</span>
             </div>
             
 
