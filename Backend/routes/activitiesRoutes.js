@@ -11,4 +11,7 @@ router.route("/GetAllExerciseDuration/p/").get(ActivitiesController.getAllExerci
 
 router.route("/GetDailyCalories").get(ActivitiesController.getDailyCalories)
 
+router.route("/GetRingChartData/p/").get(ActivitiesController.getRingChartData)
+
 export default router
+

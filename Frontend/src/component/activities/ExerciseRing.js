@@ -2,8 +2,9 @@ import "./exerciseRing.css"
 import {Doughnut} from "react-chartjs-2"
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
+import { useEffect, useState } from "react";
 
-const ExerciseRing = () => {
+const ExerciseRing = (props) => {
 
     const exerciseIconStyleWalk = {fontSize: 50, color: "#2D5D7B"}
     const exerciseIconStyleRun = {fontSize: 50, color: "#C2D076"}
@@ -20,29 +21,25 @@ const ExerciseRing = () => {
 		},
 	};
 
-
 	const data = {
-        labels: [
-            'Running',
-            "Walking",
-        ],
+        labels: ["Walking", "Treadmill"],
         datasets: [{
-          label: 'Sleep Stages',
-          data: [40, 42],
-          backgroundColor: [
-            '#2DAA8C',
-            '#5f75c4'
-          ],
-          hoverOffset: 7
+            label: 'Sleep Stages',
+            data: props.ringData,
+            backgroundColor: [
+                '#2DAA8C',
+                '#5f75c4'
+            ],
+            hoverOffset: 7
         }]
-      };
+    };
 
 	return(
         <div className="exerciseInfo">
 
             <div className="totalExercise">
                 <h3 style={{fontSize: "30px", fontWeight: "500", marginTop: "60px"}}>Exercise</h3>
-                <p style={{fontSize: "30px", fontWeight: "500",color: "#5f75c4", marginTop: "50px"}}>56</p>
+                <p style={{fontSize: "30px", fontWeight: "500",color: "#5f75c4", marginTop: "50px"}}>{props.time}</p>
                 <p style={{fontSize: "20px", color: "grey"}}>min today</p>
             </div>
 
@@ -55,7 +52,7 @@ const ExerciseRing = () => {
                     <DirectionsRunIcon style={exerciseIconStyleRun}/>
                     <div>
                         <h3 style={{fontSize: "25px", fontWeight: "500"}}>Runing</h3>
-                        <p>26 min</p>
+                        <p>{props.runTime} min</p>
                     </div>
                 </div>
 
@@ -63,7 +60,7 @@ const ExerciseRing = () => {
                     <DirectionsWalkIcon style={exerciseIconStyleWalk}/>
                     <div>
                         <h3 style={{fontSize: "25px", fontWeight: "500"}}>Walking</h3>
-                        <p>30 min</p>
+                        <p>{props.walkTime} min</p>
                     </div>
                 </div>
             </div>

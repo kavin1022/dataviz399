@@ -33,9 +33,25 @@ export default class ActivitiesController {
 				if (x.startTime.substring(0, 10) == req.query["day"]){
 					exerciseList.push({
 						activityName: x.activityName, 
-						value: x.duration/60000, 
+						value: Math.round(x.duration/60000), 
 						dateTime: x.startTime,
 						calories: x.calories
+					})
+				} 
+			});
+			res.send(exerciseList);
+		})
+	}
+
+	static async getRingChartData(req, res, next) {
+		await exerciseDAO.getAllExercises()
+		.then(response => {
+			let exerciseList = [];
+			response.map(x => {
+				if (x.startTime.substring(0, 10) == req.query["day"]){
+					exerciseList.push({
+						activityName: x.activityName, 
+						value: Math.round(x.duration/60000), 
 					})
 				} 
 			});
@@ -55,7 +71,6 @@ export default class ActivitiesController {
 	static async getDailyCalories(req, res, next) {
 		await caloriesDAO.getAllCalories()
 		.then(days => {
-			console.log(days)
 			const result = Array.from(days.reduce((m, {dateTime, value}) => 
 			m.set(dateTime.toISOString().substring(0, 10), (m.get(dateTime.toISOString().substring(0, 10)) || 0) + parseInt(value)), new Map), ([dateTime, value]) => ({dateTime, value}));
 			res.send(result.reverse())

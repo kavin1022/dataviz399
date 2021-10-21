@@ -19,5 +19,10 @@
 }
 .zeroRow{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+}
+
+#loading{
+    margin-top: 45px;
+    margin-left: 130px;
 }
