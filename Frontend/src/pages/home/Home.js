@@ -14,8 +14,7 @@ import PurpleBack from "../../component/topBar/PurpleBack";
 import TopBar from "../../component/topBar/TopBar";
 
 const Home = (props) => {
-
-    const {error, isPending, data} = useFetch("http://localhost:8000/api/activities/getLineChartSteps");
+    let {error, isPending, data} = useFetch("http://localhost:8000/api/activities/getLineChartSteps");
 
     return (
         <>

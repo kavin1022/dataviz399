@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 const ExerciseRing = (props) => {
 
     const exerciseIconStyleWalk = {fontSize: 50, color: "#2D5D7B"}
-    const exerciseIconStyleRun = {fontSize: 50, color: "#C2D076"}
+    const exerciseIconStyleRun = {fontSize: 50, color: "#5FC476"}
 	const options = {
         cutout: 70,
 		plugins:{
@@ -22,13 +22,15 @@ const ExerciseRing = (props) => {
 	};
 
 	const data = {
-        labels: ["Walking", "Treadmill"],
+        labels: props.ringLabel,
         datasets: [{
             label: 'Sleep Stages',
             data: props.ringData,
             backgroundColor: [
-                '#2DAA8C',
-                '#5f75c4'
+                "#5F7BC4",
+                "#5FC476",
+                "#C45FAE",
+                "#C4a85f",
             ],
             hoverOffset: 7
         }]
@@ -49,18 +51,20 @@ const ExerciseRing = (props) => {
 
             <div className="exerciseType">
                 <div className="exerciseTabWrapper">
-                    <DirectionsRunIcon style={exerciseIconStyleRun}/>
-                    <div>
-                        <h3 style={{fontSize: "25px", fontWeight: "500"}}>Runing</h3>
-                        <p>{props.runTime} min</p>
-                    </div>
-                </div>
-
-                <div className="exerciseTabWrapper" style={{marginTop: "50px"}}>
                     <DirectionsWalkIcon style={exerciseIconStyleWalk}/>
+                    
                     <div>
                         <h3 style={{fontSize: "25px", fontWeight: "500"}}>Walking</h3>
                         <p>{props.walkTime} min</p>
+                    </div>
+
+                </div>
+
+                <div className="exerciseTabWrapper" style={{marginTop: "50px"}}>
+                    <DirectionsRunIcon style={exerciseIconStyleRun}/>
+                    <div>
+                        <h3 style={{fontSize: "25px", fontWeight: "500"}}>Other</h3>
+                        <p>{props.runTime} min</p>
                     </div>
                 </div>
             </div>

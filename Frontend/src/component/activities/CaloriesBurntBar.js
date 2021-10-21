@@ -1,23 +1,24 @@
 import "./caloriesBurntBar.css"
 import {Bar} from "react-chartjs-2";
-import { Ticks } from "chart.js";
 
-const CaloriesBurntBar = () => {
+const CaloriesBurntBar = (props) => {
 
 	let data = {
-        labels: ["Runing", "Other"],
+        labels: ["Walking", "Other"],
         axis: "x",
         datasets: [{
-          data: [50, 20],
+          data: props.barData,
           backgroundColor: [
-            '#2DAA8C',
-            '#5f75c4'
-
+            '#5F7BC4',
+            "#5FC476",
+            '#C45FAE',
+            "#C4a85f",
           ],
           borderColor: [
-            "#C2D076",
-            '#5f75c4'
-
+            '#5F7BC4',
+            "#5FC476",
+            '#C45FAE',
+            "#C4a85f",
           ],
           borderWidth: 1
         }]
@@ -38,13 +39,11 @@ const CaloriesBurntBar = () => {
             x: {
                 ticks: {
                     display: false,
-                    
                 },
                 grid: {
                     display: false,
                     drawBorder: false,
                 },
-                
             },
             y: {
                 grid: {
@@ -60,7 +59,7 @@ const CaloriesBurntBar = () => {
             <div className="headingText">
                 <h3 style={{fontSize: "25px", fontWeight: "400"}}>Daily Calories Burnt</h3>
                 <div>
-                    <p className="cNumber">550</p>
+                    <p className="cNumber">{props.totalCalories}</p>
                     <p className="cSub">Calories Today</p>
                 </div>
             </div>

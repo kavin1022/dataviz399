@@ -23,6 +23,11 @@ const Activities = () => {
     const [runTime, setRunTime] = useState(0);
     const [walkTime, setWalkTime] = useState(0);
 
+    /* Bar Graph */
+    const [totalCalories, setTotalCalories] = useState();
+    const [barLabel, setBarLabel] = useState();
+    const [barData, setBarData] = useState();
+
     const update = (arr) => {
         let sum = 0;
         for (let i=0; i<arr.length; i++){
@@ -31,43 +36,6 @@ const Activities = () => {
             }
         }
         return sum;
-    }
-
-    const filterArray = (list) => {
-        let tempList = [];
-        for(let i = 0; i < list.length; i ++){
-            if (tempList.includes(list[i].activityName) == false){
-                tempList.push(list[i].activityName);
-            }
-        }
-        return tempList
-    }
-
-    const parseToLabelData = (exerList) => {
-        console.log(exerList);
-        console.log(ringLabel);
-
-        const tempRingData = ringLabel.map(x => 0);
-        for (let i = 0; i<exerList.length; i++){
-            if (exerList[i].activityName == ringLabel[0]){
-                tempRingData[0] += exerList[i].value;
-                continue;
-            }
-            if (exerList[i].activityName == ringLabel[1]){
-                tempRingData[1] += exerList[i].value;
-                continue;
-            }
-            if (exerList[i].activityName == ringLabel[2]){
-                tempRingData[2] += exerList[i].value;
-                continue;
-            }
-            if (exerList[i].activityName == ringLabel[3]){
-                tempRingData[3] += exerList[i].value;
-                continue;
-            }
-        }
-        console.log(tempRingData);
-        return tempRingData;
     }
 
     useEffect(() => {
@@ -86,24 +54,56 @@ const Activities = () => {
             setExerciseValue(Math.round(update(await exerDurPromise) * 100)/100);
             setCaloriesValue(Math.round(update(await caloriesPromise) * 100)/100);
 
-            /* Updating ring chart*/
+            /* Updating ring chart */
             const exerList = await exerDurPromise;
-            console.log(exerList);
 
             let total = Array.from(exerList.reduce((m, {activityName, value}) => 
 			m.set(activityName, (m.get(activityName) || 0) + value), new Map),
             ([activityName, value]) => ({activityName, value}));
 
-            console.log(total);
+            let totalButCalories = Array.from(exerList.reduce((m, {activityName, calories}) => 
+			m.set(activityName, (m.get(activityName) || 0) + calories), new Map),
+            ([activityName, calories]) => ({activityName, calories}));
 
-            let tempLabel = [];
-            let tempData = total.map(x => 0);
-            total.map(x => {
-                tempLabel.push(x.activityName);
-                tempData[tempLabel.indexOf(x.activityName)] += x.value;
-            })
-            setRingLabel(tempLabel);
-            setRingData(tempData);
+            console.log(exerList);
+            if (exerList.length !== 0){
+                /* For Ring Chart */
+                let tempRingLabel = [];
+                let tempRingData = total.map(x => 0);
+                let tempRunTime = 0;
+                let tempWalkTime = 0;
+                total.map(x => {
+                    tempRingLabel.push(x.activityName);
+                    tempRingData[tempRingLabel.indexOf(x.activityName)] += x.value;
+                    if(x.activityName === "Walk"){tempWalkTime += x.value}
+                    else{
+                        tempRunTime += x.value;
+                    }
+                })
+                setRingLabel(tempRingLabel);
+                setRingData(tempRingData);
+                setWalkTime(tempWalkTime);
+                setRunTime(tempRunTime);
+
+                /* For Bar Graph */
+                let tempBarData = [0, 0];
+                let tempTotalCalories = 0;
+                totalButCalories.map(x => {
+                    if(x.activityName == "Walk"){tempBarData[0] += x.calories;}
+                    else{tempBarData[1] += x.calories};
+                    tempTotalCalories += x.calories;
+                })
+                setTotalCalories(tempTotalCalories);
+                setBarData(tempBarData);
+            }else{
+                setRingData([100]);
+                setRingLabel(["None"]);
+                setWalkTime(0);
+                setRunTime(0);
+            }
+
+            /* Update Calories Bar Graph*/
+            
 
             setLoading(false);
         })
@@ -126,7 +126,7 @@ const Activities = () => {
 
             <div className="secondRow">
                 <ExerciseRing time={exerciseValue} runTime={runTime} walkTime={walkTime} ringLabel={ringLabel} ringData={ringData} />
-                <CaloriesBurntBar/>
+                <CaloriesBurntBar totalCalories={totalCalories} barData={barData} barLabel={barLabel}/>
             </div>
         </div>
     )
