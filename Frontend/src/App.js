@@ -18,7 +18,6 @@ import { Redirect } from 'react-router';
 
 function App() {
 
-
 	return (
 		<div>
 			<Router>

@@ -98,6 +98,8 @@ const Activities = () => {
             }else{
                 setRingData([100]);
                 setRingLabel(["None"]);
+                setTotalCalories(0);
+                setBarData([0, 0]);
                 setWalkTime(0);
                 setRunTime(0);
             }

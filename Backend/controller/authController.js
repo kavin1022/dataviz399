@@ -4,6 +4,7 @@ import distanceDAO from "../dao/distanceDAO.js";
 import exerciseDAO from "../dao/exerciseDAO.js";
 import StepDAO from "../dao/stepDAO.js";
 import caloriesDAO from "../dao/caloriesDAO.js";
+import sleepDAO from "../dao/sleepDAO.js";
 
 export default class authController {
 
@@ -35,7 +36,8 @@ export default class authController {
                     const b = exerciseDAO.injectDB(user.username);
                     const c = distanceDAO.injectDB(user.username);
                     const d = caloriesDAO.injectDB(user.username);
-                    Promise.all([a, b, c, d])
+                    const f = sleepDAO.injectDB(user.username);
+                    Promise.all([a, b, c, d, f])
                     .then(() => {
                         res.send({message:"login success",user:user});
                     })

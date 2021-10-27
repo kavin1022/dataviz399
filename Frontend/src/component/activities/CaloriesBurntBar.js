@@ -9,15 +9,15 @@ const CaloriesBurntBar = (props) => {
         datasets: [{
           data: props.barData,
           backgroundColor: [
-            '#5F7BC4',
+            "#5F7BC4",
             "#5FC476",
-            '#C45FAE',
+            "#C45FAE",
             "#C4a85f",
           ],
           borderColor: [
-            '#5F7BC4',
+            "#5F7BC4",
             "#5FC476",
-            '#C45FAE',
+            "#C45FAE",
             "#C4a85f",
           ],
           borderWidth: 1
