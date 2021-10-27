@@ -13,13 +13,13 @@ const WeeklySleepLine = (props) => {
 	//const [dateFilter, setDateFilter] = useState();
 
 	let data = {
-		labels: ["Monday", "Tuesday", "Wednesday" , "Thursday", "Friday", "Saturday", "Sunday"],
+		labels: props.label,
 		datasets: [{
-		  	label: 'Step Counts',
+		  	label: 'Hours of Sleep',
 		  	backgroundColor: '#5f75c4',
 		  	borderColor: '#5f75c4',
 			tension: 0.3,
-		  	data: [6.7, 8.3, 7.5, 7.8, 8, 8.9, 8.4],
+		  	data: props.data,
 		}]
 	};
 
