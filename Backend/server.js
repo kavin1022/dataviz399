@@ -1,16 +1,19 @@
 import express from "express"
 import cors from "cors"
 import mongoose from "mongoose"
-
+import dotenv from "dotenv"
+dotenv.config();
 //routes import
 import activities from "./routes/activitiesRoutes.js"
 import auth from "./routes/authRoutes.js"
 import sleep from "./routes/sleepRoutes.js"
+//local link: mongodb://localhost:27017/dataviz399
 
 const port = 8000;
 
+console.log()
 const connectDB = async () => {
-    await mongoose.connect("mongodb://localhost:27017/dataviz399", {useNewUrlParser: true, useUnifiedTopology: true})
+    await mongoose.connect(process.env.DB_HOST, {useNewUrlParser: true, useUnifiedTopology: true})
     
     console.log("database connected")
 }
