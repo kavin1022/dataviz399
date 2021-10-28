@@ -1,7 +1,7 @@
 import "./sleepStageRing.css"
 import {Doughnut} from "react-chartjs-2"
 
-const SleepStageRing = () => {
+const SleepStageRing = (props) => {
 	const options = {
         cutout: 70,
 		plugins:{
@@ -15,26 +15,25 @@ const SleepStageRing = () => {
 		},
 	};
 
-
 	const data = {
         labels: [
             'Deep Sleep',
-            "Awake",
             "Light Sleep",
-            "REM"
+            "REM",
+            "Awake"
         ],
         datasets: [{
-          label: 'Sleep Stages',
-          data: [40, 42, 249, 55],
-          backgroundColor: [
-            '#000807',
-            '#C2D076',
-            '#2D5D7B',
-            '#457EAC',
-          ],
-          hoverOffset: 7
+			label: 'Sleep Stages',
+			data: props.data,
+			backgroundColor: [
+				'#000807',
+				'#C2D076',
+				'#2D5D7B',
+				'#457EAC',
+			],
+			hoverOffset: 7
         }]
-      };
+    };
 
 	return(
 		<div className="sleepStageRingWrapper">

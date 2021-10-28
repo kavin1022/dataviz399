@@ -19,13 +19,24 @@ export default class ActivitiesController {
 					duration: Math.round(x.duration/3600000 * 100)/100,
 					startTime: x.startTime,
 					endTime: x.endTime,
-					efficiency: x.efficiency
+					efficiency: x.efficiency,
+					levels: x.levels.summary
 				})
 			)
 			res.send(temp)
 		})
 	}
 
-
-
+	static async getSleepStages(req, res, next) {
+		await sleepDAO.getAllSleeps()
+		.then(response => {
+			let temp = [];
+			response.map(x => 
+				temp.push({	
+					dateTime: x.dateOfSleep,
+				})
+			)
+			res.send(temp)
+		})
+	}
 }

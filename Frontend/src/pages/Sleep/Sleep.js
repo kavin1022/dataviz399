@@ -20,6 +20,8 @@ const Sleep = () => {
     const [sleepLineLabel, setSleepLineLabel] = useState(0);
     const [sleepLineData, setSleepLineData] = useState(0);
 
+    const [sleepStagesData, setSleepStagesData] = useState(0);
+
     const parseDuration = (data) => {
         for(let i = 0; i < data.length; i++){
             if (data[i].dateTime === date){
@@ -30,6 +32,14 @@ const Sleep = () => {
                 setWentToSleep(data[i].startTime.substring(data[i].startTime.length - 8, data[i].startTime.length));
                 setEfficiency(data[i].efficiency)
                 setwakeUp(data[i].endTime.substring(data[i].endTime.length - 12, data[i].endTime.length-7));
+
+                //Set ringdata
+                let tempRingData = [];
+                for (const [key, value] of Object.entries(data[i].levels)) {
+                    tempRingData.push(value.minutes);
+                }
+                console.log(tempRingData);
+                setSleepStagesData(tempRingData);
 
                 return i;
             }
@@ -45,9 +55,6 @@ const Sleep = () => {
             let sleepInfo = await durationPromise
             let dateIndex = parseDuration(sleepInfo);
 
-            console.log(sleepInfo);
-            console.log();
-
             let tempData = [];
             let tempLabel = [];
             sleepInfo.slice(dateIndex - 6, dateIndex + 1).map(x => {
@@ -56,7 +63,7 @@ const Sleep = () => {
             });
             setSleepLineData(tempData);
             setSleepLineLabel(tempLabel)
-            
+        
         })
     }, [date])
     
@@ -74,7 +81,7 @@ const Sleep = () => {
 
             <div className="sleepRowTwo">
                 <WeeklySleepLine data={sleepLineData} label={sleepLineLabel} />
-                <SleepStageRing/>
+                <SleepStageRing data={sleepStagesData}/>
             </div>
 
         </div>
