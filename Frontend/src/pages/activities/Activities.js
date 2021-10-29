@@ -7,9 +7,8 @@ import BackgroudGrey from "../../component/topBar/BackgroundGrey";
 import DatePickerSelf from "../../component/topBar/DatePickerSelf";
 import TopBar from "../../component/topBar/TopBar";
 
-const Activities = () => {
+const Activities = (props) => {
     const [loading, setLoading] = useState(false);
-    const [date, setDate] = useState("2020-03-31");
 
     /* Featured info states*/
     const [stepValue, setStepValue] = useState();
@@ -31,7 +30,7 @@ const Activities = () => {
     const update = (arr) => {
         let sum = 0;
         for (let i=0; i<arr.length; i++){
-            if (arr[i].dateTime.substring(0,10) == date){
+            if (arr[i].dateTime.substring(0,10) == props.date){
                 sum += arr[i].value;
             }
         }
@@ -42,7 +41,7 @@ const Activities = () => {
         setLoading(true);
         const stepPromise = fetch("http://localhost:8000/api/activities/getLineChartSteps").then(response => response.json()).then(res => {return res})
         const disPromise = fetch("http://localhost:8000/api/activities/getdailydistance").then(response => response.json()).then(res => {return res})
-        const exerDurPromise = fetch("http://localhost:8000/api/activities/getAllExerciseDuration/p?day=" + date).then(response => response.json()).then(res => {return res})
+        const exerDurPromise = fetch("http://localhost:8000/api/activities/getAllExerciseDuration/p?day=" + props.date).then(response => response.json()).then(res => {return res})
         const caloriesPromise = fetch("http://localhost:8000/api/activities/GetDailyCalories").then(response => response.json()).then(res => {return res})
 
         const proList = [stepPromise, disPromise, exerDurPromise, caloriesPromise]
@@ -109,16 +108,18 @@ const Activities = () => {
 
             setLoading(false);
         })
-    }, [date]);
+    }, [props.date]);
       
     return (
         <div className="activities">
             <BackgroudGrey/>
             <TopBar color="#5F6AC4"/>
+
             <div className = "zeroRow">
-                <DatePickerSelf date={date} setDate={setDate}/>
+                <DatePickerSelf date={props.date} setDate={props.setDate}/>
                 {loading && <h2 id="loading">Updating...</h2>}
             </div>
+
             <div className="firstRow">
                 <AFeaturedInfo title = {"Steps"} value={stepValue} sub={"steps"}/>
                 <AFeaturedInfo title = {"Distance"} value={distanceValue} sub={"km"}/>
@@ -128,6 +129,7 @@ const Activities = () => {
 
             <div className="secondRow">
                 <ExerciseRing time={exerciseValue} runTime={runTime} walkTime={walkTime} ringLabel={ringLabel} ringData={ringData} />
+
                 <CaloriesBurntBar totalCalories={totalCalories} barData={barData} barLabel={barLabel}/>
             </div>
         </div>

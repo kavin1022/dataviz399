@@ -16,16 +16,16 @@ const ExerciseRing = (props) => {
 			},
 			title:{
 				display: false,
-				text: "Sleep Stages"
+				text: "Exercises"
 			}
 		},
 	};
 
 	const data = {
-        labels: props.ringLabel,
+        labels: props.ringLabel, // ["walk", "treadmill"]
         datasets: [{
-            label: 'Sleep Stages',
-            data: props.ringData,
+            label: 'Exercises',
+            data: props.ringData, // [41, 19]
             backgroundColor: [
                 "#5F7BC4",
                 "#5FC476",

@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import "./stepLineChart.css";
 import {Line} from "react-chartjs-2";
-import StaticDatePicker from "./StaticDatePicker";
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import CalendarPicker from '@mui/lab/CalendarPicker';
+import MonthPicker from '@mui/lab/MonthPicker';
+import YearPicker from '@mui/lab/YearPicker';
+import Grid from '@mui/material/Grid';
+import {format} from "date-fns"
+import TextField from '@mui/material/TextField';
+import { parseISO } from 'date-fns' 
 
 
 const StepLineChart = (props) => {
@@ -50,6 +58,7 @@ const StepLineChart = (props) => {
 		setLabels(temp.map(x => x.dateTime));
 		setStepData(temp.map(x => x.value));
 		setSteps(temp);
+		console.log(props.date)
 	}, [])
 
 	return(
@@ -58,7 +67,14 @@ const StepLineChart = (props) => {
 				{steps && <Line data={data} height={50} options={options} />}
 			</div>
 			<div className="pickerContainer">
-				<StaticDatePicker/>
+			<LocalizationProvider dateAdapter={AdapterDateFns}>
+         		<CalendarPicker 
+					date={new Date(Date.parse(props.date))} 
+					dateFormat="YYYY-MM-DD" 
+					onChange={(newValue) => {props.setDate(format(newValue, "yyyy-MM-dd"));}}
+					renderInput={(params) => <TextField {...params} />}
+				/>
+    		</LocalizationProvider>
 			</div>
 		</div>
 	)

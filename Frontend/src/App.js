@@ -1,5 +1,5 @@
 import './App.css';
-import React from "react"
+import React, { useState } from "react"
 import Navbar from "./component/navbar/Navbar"
 import TopBar from './component/topBar/TopBar';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -18,6 +18,8 @@ import { Redirect } from 'react-router';
 
 function App() {
 
+	const [date, setDate] = useState("2020-03-31");
+
 	return (
 		<div>
 			<Router>
@@ -27,17 +29,16 @@ function App() {
 					<Route path="/register" exact component={Register} />
 					<div>
 						<Navbar/>
-						<Route path="/" exact component={Home} />
-						<Route path="/activities" component={Activities}/>
+						<Route path="/" exact render={() => <Home date={date} setDate={setDate}/>} />
+						<Route path="/activities" render={() => <Activities date={date} setDate={setDate}/>}/>
 						<Route path="/heartrate" component={HeartRate}/>
 						<Route path="/nutrition" component={Nutrition}/>
-						<Route path="/sleep" component={Sleep}/>
+						<Route path="/sleep" render={() => <Sleep date={date} setDate={setDate}/>}/>
 						<Route path="/wellness" component={SignIn}/>
 					</div>
 				</Switch>
 			</Router>
 		</div>
-		
 	);
 }
 

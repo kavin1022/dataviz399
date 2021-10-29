@@ -8,9 +8,8 @@ import WeeklySleepLine from  "../../component/sleep/WeeklySleepLine"
 import TopBar from "../../component/topBar/TopBar";
 import { useEffect, useState } from "react";
 
-const Sleep = () => {
+const Sleep = (props) => {
     const [loading, setLoading] = useState(false);
-    const [date, setDate] = useState("2020-03-31");
 
     const [efficiency, setEfficiency] = useState(0);
     const [wentToSleep, setWentToSleep] = useState(0);
@@ -24,12 +23,12 @@ const Sleep = () => {
 
     const parseDuration = (data) => {
         for(let i = 0; i < data.length; i++){
-            if (data[i].dateTime === date){
+            if (data[i].dateTime === props.date){
 
                 //Convert single digit to double digit (e.g. 6 => 06)
                 //Set time in bed (e.g. 06:12)
                 setTimeInBed(`${(Math.round(data[i].duration)).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})}:${Math.round(data[i].duration / 10 * 60)}`);
-                setWentToSleep(data[i].startTime.substring(data[i].startTime.length - 8, data[i].startTime.length));
+                setWentToSleep(data[i].startTime.substring(data[i].startTime.length - 8, data[i].startTime.length-3));
                 setEfficiency(data[i].efficiency)
                 setwakeUp(data[i].endTime.substring(data[i].endTime.length - 12, data[i].endTime.length-7));
 
@@ -65,17 +64,17 @@ const Sleep = () => {
             setSleepLineLabel(tempLabel)
         
         })
-    }, [date])
+    }, [props.date])
     
     return (
         <div className="sleep">
             <TopBar color="#5F6AC4"/> 
-            <DatePickerSelf date={date} setDate={setDate}/>
-            
+            <DatePickerSelf date={props.date} setDate={props.setDate} />
+        
             <div className="sleepRowOne">
-                <SleepFeaturedInfo title="Time In Bed" value={timeInBed}/>
                 <SleepFeaturedInfo title="Went to Sleep" value={wentToSleep}/>
                 <SleepFeaturedInfo title="Woke Up" value={wakeUp}/>
+                <SleepFeaturedInfo title="Time In Bed" value={timeInBed}/>
                 <SleepFeaturedInfo title="Efficiency" value={`${efficiency}%`}/>
             </div>
 

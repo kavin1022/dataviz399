@@ -30,7 +30,7 @@ const Home = (props) => {
                 <TopBar color="white"/> 
                 <h1 className="welcomeMessage">Welcome back, Yu-en Goh</h1>
                 <FeaturedInfo stepsData={data}/>
-                <StepLineChart stepsData={data}/>
+                <StepLineChart stepsData={data} date={props.date} setDate={props.setDate} />
 
                 <div className="HomeRowThree">
                     <ExerciseHomeCom/>
