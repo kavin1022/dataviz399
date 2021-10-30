@@ -11,6 +11,7 @@ import sleep from "./routes/sleepRoutes.js"
 //local link: mongodb://localhost:27017/dataviz399
 
 import path from "path";
+const __dirname = path.resolve();
 
 const port = process.env.PORT;
 
