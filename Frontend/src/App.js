@@ -12,6 +12,7 @@ import Wellness from './pages/Wellness';
 import PurpleBack from './component/topBar/PurpleBack';
 import SignIn from './pages/SignIn';
 import Register from './pages/Register';
+import Clinician from './pages/clinician/clinician';
 
 import allPageFetch from './component/Fetch/allPageFetch';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -122,7 +123,7 @@ function App() {
 
 						<Route path="/heartrate" component={HeartRate}/>
 
-						<Route path="/nutrition" component={Nutrition}/>
+						<Route path="/nutrition" component={Clinician}/>
 
 						<Route path="/sleep" render={() => 
 							<Sleep 
