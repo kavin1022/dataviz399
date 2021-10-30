@@ -1,7 +1,5 @@
 const homeFetch = async(date, setHomeLoading, setStepsHome, setStepLineLabels, setStepLineData) => {
 
-    console.log("ran")
-
     const stepLinePromise = fetch("http://localhost:8000/api/activities/getLineChartSteps").then(response => response.json()).then(res => {return res});
     const proList = [stepLinePromise]
     Promise.all(proList)

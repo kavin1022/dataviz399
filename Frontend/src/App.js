@@ -21,6 +21,7 @@ import homeFetch from './component/Fetch/homeFetch';
 
 function App() {
 
+	const [loggedIn, setLoggedIn] = useState(false);
 	const [date, setDate] = useState("2020-03-31");
 	const [homeLoading, setHomeLoading] = useState(false);
 	const [sleepLoading, setSleepLoading] = useState(false);
@@ -46,6 +47,7 @@ function App() {
     const [ringData, setRingData] = useState();
     const [runTime, setRunTime] = useState(0);
     const [walkTime, setWalkTime] = useState(0);
+
    // Bar Graph 
     const [totalCalories, setTotalCalories] = useState();
     const [barLabel, setBarLabel] = useState();
@@ -55,32 +57,35 @@ function App() {
 	const [stepsHome, setStepsHome] = useState(false);
 	const [stepLineLabels, setStepLineLabels] = useState([""]);
 	const [stepLineData, setStepLineData] = useState([0]);
+	const [homeTotalCalories, setHomeTotalCalories] = useState(0);
 
 
 	useEffect(async() => {
-		setSleepLoading(true);
-		setHomeLoading(true);
-		setActivLoading(true);
-		
-		await allPageFetch(date, 
-			setSleepLoading, setActivLoading,
-			setDistanceValue, setExerciseValue, setCaloriesValue, setRingLabel, setRingData, setRunTime, setWalkTime, setTotalCalories, setBarLabel, setBarData, setStepValue,
-			setTimeInBed, setWentToSleep, setEfficiency, setwakeUp, setSleepStagesData, setSleepLineData, setSleepLineLabel,
-		);
-		await homeFetch(date, setHomeLoading, setStepsHome, setStepLineLabels, setStepLineData);
+		if (loggedIn){
+			setSleepLoading(true);
+			setHomeLoading(true);
+			setActivLoading(true);
 			
-		console.log(sleepLoading && homeLoading && activLoading);
-
+			await allPageFetch(date, 
+				setSleepLoading, setActivLoading,
+				setDistanceValue, setExerciseValue, setCaloriesValue, setRingLabel, setRingData, setRunTime, setWalkTime, setTotalCalories, setBarLabel, setBarData, setStepValue,
+				setTimeInBed, setWentToSleep, setEfficiency, setwakeUp, setSleepStagesData, setSleepLineData, setSleepLineLabel, setHomeTotalCalories
+			);
+			await homeFetch(date, setHomeLoading, setStepsHome, setStepLineLabels, setStepLineData);
+				
+			console.log(sleepLoading && homeLoading && activLoading);
+		}
 	},[date])
 
 	return (
 		<div>
 			
 			{(sleepLoading && homeLoading && activLoading) && <div className="loading"><CircularProgress/></div>}
+
 			<Router>
-				<Navbar/>
+				{loggedIn && <Navbar/>}
 				<Switch>
-					<Route path="/login" exact component={SignIn} />
+					<Route path="/login" exact render={() => <SignIn setLoggedIn={setLoggedIn} setDate={setDate} />} />
 					<Route path="/register" exact component={Register} />
 
 						{!sleepLoading && !homeLoading && !activLoading && <div>
@@ -93,6 +98,7 @@ function App() {
 								stepLineLabels={stepLineLabels}
 								sleepLineData={sleepLineData}
 								timeInBed={timeInBed}
+								homeTotalCalories={homeTotalCalories}
 							/>} 
 						/>
 

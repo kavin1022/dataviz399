@@ -31,10 +31,10 @@ const FeaturedInfo = (props) => {
         return(
             <div className="featuredItem">
     
-                <span className="featuredTitle">Exercises Time</span>
+                <span className="featuredTitle">Calories Burnt</span>
                 <div className="featuredExercisesTimeContainer">
-                    <span className="featuredExercisesTime">1 Hour 13 Minutes</span>
-                    <PercentageChange dataBefore = {1000} dataAfter = {900}/>
+                    <span className="featuredExercisesTime">{props.homeTotalCalories[0].value}</span>
+                    <PercentageChange dataBefore = {props.homeTotalCalories[0].value} dataAfter = {props.homeTotalCalories[1].value}/>
                 </div>
                 <span className="featuredSub">Compared to yesterday</span>
     

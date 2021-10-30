@@ -2,7 +2,7 @@
 const allPageFetch = async(date, 
     setSleepLoading, setActivLoading,
     setDistanceValue, setExerciseValue, setCaloriesValue, setRingLabel, setRingData, setRunTime, setWalkTime, setTotalCalories, setBarLabel, setBarData, setStepValue, 
-    setTimeInBed, setWentToSleep, setEfficiency, setwakeUp, setSleepStagesData, setSleepLineData, setSleepLineLabel,
+    setTimeInBed, setWentToSleep, setEfficiency, setwakeUp, setSleepStagesData, setSleepLineData, setSleepLineLabel, setHomeTotalCalories
     ) => {
 
     const activitiesUpdate = async() => {
@@ -15,11 +15,21 @@ const allPageFetch = async(date,
             }
             return sum;
         }
+
+        const sliceHomeTotalCalories = (arr) => {
+            for (let i=0; i<arr.length; i++){
+                if (arr[i].dateTime == date){
+                    return (arr.slice(i));
+                }
+            }
+        }
         /* Updating featured info */
+        let c = (await caloriesPromise)
         setStepValue(update(await stepPromise));
         setDistanceValue(Math.round(update(await disPromise) * 100)/100);
         setExerciseValue(Math.round(update(await exerDurPromise) * 100)/100);
-        setCaloriesValue(Math.round(update(await caloriesPromise) * 100)/100);
+        setCaloriesValue(Math.round(update(c) * 100)/100);
+        setHomeTotalCalories(sliceHomeTotalCalories(c));
 
         /* Updating ring chart */
         const exerList = await exerDurPromise;

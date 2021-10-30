@@ -3,8 +3,6 @@
 	import Button from '@mui/material/Button';
 	import CssBaseline from '@mui/material/CssBaseline';
 	import TextField from '@mui/material/TextField';
-	import FormControlLabel from '@mui/material/FormControlLabel';
-	import Checkbox from '@mui/material/Checkbox';
 	import Link from '@mui/material/Link';
 	import Grid from '@mui/material/Grid';
 	import Box from '@mui/material/Box';
@@ -16,6 +14,7 @@
 	import axios from "axios";
 	import CircularProgress from '@material-ui/core/CircularProgress';
 	import { useState } from 'react';
+import setDate from 'date-fns/setDate';
 
 	function Copyright(props) {
 
@@ -34,7 +33,7 @@
 
 	const theme = createTheme();
 
-	export default function SignIn() {
+	export default function SignIn(props) {
 		const history = useHistory();
 		const [isPending, setIsPending] = useState(false);
 
@@ -52,6 +51,9 @@
 				console.log(res);
 				if (res.data.message == "login success"){
 					alert("login success")
+					props.setLoggedIn(true);
+					props.setDate("2020-03-30")
+					console.log(props.date);
 					history.push("/")
 				}else if(res.data.message == "wrong credentials"){
 					alert("Incorrect Password")
