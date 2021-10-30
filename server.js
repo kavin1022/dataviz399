@@ -12,7 +12,7 @@ import sleep from "./routes/sleepRoutes.js"
 
 import path from "path";
 
-const port = 8000;
+const port = process.env.PORT;
 
 console.log()
 const connectDB = async () => {
@@ -40,7 +40,7 @@ if(process.env.NODE_ENV === "production"){
 }
 
 app.use("*", (req, res) => res.status(404).json({ error: "api not found"}))
-app.listen(port, () => {
-    console.log(`listening on port ${port}`)
+app.listen(process.env.PORT, () => {
+    console.log(`listening on port ${process.env.PORT}`)
 })
 
