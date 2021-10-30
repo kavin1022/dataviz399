@@ -35,12 +35,14 @@ app.use("/api/sleep", sleep)
 if(process.env.NODE_ENV === "production"){
     app.use(express.static(path.join(__dirname, "./Frontend/build")));
 
-    app.get("*", (req, res) => {
+    app.get("/", (req, res) => {
         res.sendFile(path.join(__dirname, "./Frontend/build/index.html"));
     })
+}else{
+    app.use("*", (req, res) => res.status(404).json({ error: "api not found"}))
 }
 
-app.use("*", (req, res) => res.status(404).json({ error: "api not found"}))
+
 app.listen(process.env.PORT, () => {
     console.log(`listening on port ${process.env.PORT}`)
 })
