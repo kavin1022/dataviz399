@@ -1,4 +1,4 @@
-const homeFetch = (date, setLoading, setStepsHome, setStepLineLabels, setStepLineData) => {
+const homeFetch = async(date, setHomeLoading, setStepsHome, setStepLineLabels, setStepLineData) => {
 
     console.log("ran")
 
@@ -13,7 +13,8 @@ const homeFetch = (date, setLoading, setStepsHome, setStepLineLabels, setStepLin
                 setStepLineLabels(temp.map(x => x.dateTime.slice(5)));
 		        setStepLineData(temp.map(x => x.value));
 		        setStepsHome(data[i].value);
-                setLoading(false);
+                setHomeLoading(false);
+                console.log("home loading finished")
             }
         }
     })

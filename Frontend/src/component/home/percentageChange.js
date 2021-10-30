@@ -10,7 +10,7 @@ const PercentageChange = (props) => {
     const negativeStyle = {color: "red", fontSize: "1.4em", marginLeft:"10px", marginTop: "1px"};
 
     useEffect(() => {
-        const pc = Math.round((1- (props.dataAfter / props.dataBefore)) * -1 * 100);
+        const pc = (Math.round((props.dataAfter/props.dataBefore -1) * 100))
         setPercentageChange(pc);
         setPositive((pc > 0 ? true : false));
     })
@@ -18,7 +18,7 @@ const PercentageChange = (props) => {
     return(
         <>
             {positive && <>
-                <span>+{percentageChange}%</span>
+                <span>{percentageChange}%</span>
                 <MdIcon.MdArrowUpward style={positiveStyle}/>
             </>}
 

@@ -22,7 +22,9 @@ import homeFetch from './component/Fetch/homeFetch';
 function App() {
 
 	const [date, setDate] = useState("2020-03-31");
-	const [loading, setLoading] = useState(false);
+	const [homeLoading, setHomeLoading] = useState(false);
+	const [sleepLoading, setSleepLoading] = useState(false);
+	const [activLoading, setActivLoading] = useState(false);
 
 	/* Sleep States */
 	const [efficiency, setEfficiency] = useState(0);
@@ -55,39 +57,42 @@ function App() {
 	const [stepLineData, setStepLineData] = useState([0]);
 
 
-	useEffect(() => {
-		setLoading(true);
-		//await sleepFetch(date, setTimeInBed, setWentToSleep, setEfficiency, setwakeUp, setSleepStagesData, setSleepLineData, setSleepLineLabel);
+	useEffect(async() => {
+		setSleepLoading(true);
+		setHomeLoading(true);
+		setActivLoading(true);
 		
-		allPageFetch(date, 
-			setLoading, setDistanceValue, setExerciseValue, setCaloriesValue, setRingLabel, setRingData, setRunTime, setWalkTime, setTotalCalories, setBarLabel, setBarData, setStepValue,
+		await allPageFetch(date, 
+			setSleepLoading, setActivLoading,
+			setDistanceValue, setExerciseValue, setCaloriesValue, setRingLabel, setRingData, setRunTime, setWalkTime, setTotalCalories, setBarLabel, setBarData, setStepValue,
 			setTimeInBed, setWentToSleep, setEfficiency, setwakeUp, setSleepStagesData, setSleepLineData, setSleepLineLabel,
-			setStepsHome, setStepLineLabels, setStepLineData
 		);
-		homeFetch(date, setLoading, setStepsHome, setStepLineLabels, setStepLineData);
-		
-		//console.log(loading);
+		await homeFetch(date, setHomeLoading, setStepsHome, setStepLineLabels, setStepLineData);
+			
+		console.log(sleepLoading && homeLoading && activLoading);
+
 	},[date])
 
 	return (
 		<div>
 			
-			{loading && <div className="loading"><CircularProgress/></div>}
+			{(sleepLoading && homeLoading && activLoading) && <div className="loading"><CircularProgress/></div>}
 			<Router>
 				<Navbar/>
 				<Switch>
 					<Route path="/login" exact component={SignIn} />
 					<Route path="/register" exact component={Register} />
 
-						{!loading && <div>
+						{!sleepLoading && !homeLoading && !activLoading && <div>
 						<Route path="/" exact render={() => 
 							<Home
-								loading={loading} 
 								date={date} 
 								setDate={setDate}
 								stepsHome={stepsHome}
 								stepLineData={stepLineData}
 								stepLineLabels={stepLineLabels}
+								sleepLineData={sleepLineData}
+								timeInBed={timeInBed}
 							/>} 
 						/>
 

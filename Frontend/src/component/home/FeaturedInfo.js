@@ -9,7 +9,7 @@ const FeaturedInfo = (props) => {
     const negativeStyle = {color: "red", fontSize: "1.4em", marginLeft:"10px", marginTop: "1px"};
 
     useEffect(() => {
-        console.log(props.stepLineData[props.stepLineData.length-1])
+        console.log(props.sleepLineData[props.sleepLineData.length-1])
     })
 
     const TotalSleepTime = () => {
@@ -18,9 +18,8 @@ const FeaturedInfo = (props) => {
     
                 <span className="featuredTitle">Sleep Time</span>
                 <div className="featuredSleepTimeContainer">
-                    <span className="featuredSleepTime">7 Hour 56 Minutes</span>
-                    <span className="featuredSleepTimePercentageChange">-10%</span>
-                    <MdIcon.MdArrowDownward style={negativeStyle}/>
+                    <span className="featuredSleepTime">{props.timeInBed}</span>
+                    <PercentageChange dataBefore = {props.sleepLineData[props.sleepLineData.length-2]} dataAfter = {props.sleepLineData[props.sleepLineData.length-1]}/>
                 </div>
                 <span className="featuredSub">Compared to yesterday</span>
     
@@ -35,8 +34,7 @@ const FeaturedInfo = (props) => {
                 <span className="featuredTitle">Exercises Time</span>
                 <div className="featuredExercisesTimeContainer">
                     <span className="featuredExercisesTime">1 Hour 13 Minutes</span>
-                    <span className="featuredExercisesTimePercentageChange">+12%</span>
-                    <MdIcon.MdArrowDownward style={negativeStyle}/>
+                    <PercentageChange dataBefore = {1000} dataAfter = {900}/>
                 </div>
                 <span className="featuredSub">Compared to yesterday</span>
     
@@ -51,7 +49,7 @@ const FeaturedInfo = (props) => {
                 <span className="featuredTitle">Steps</span>
                 <div className="featuredStepsContainer">
                     <span className="featuredSteps">{props.stepLineData[props.stepLineData.length-1]}</span>
-                    <PercentageChange dataBefore = {props.stepLineData[props.stepLineData.length-1]} dataAfter = {props.stepLineData[props.stepLineData.length-2]}/>
+                    <PercentageChange dataBefore = {props.stepLineData[props.stepLineData.length-2]} dataAfter = {props.stepLineData[props.stepLineData.length-1]}/>
                 </div>
                 <span className="featuredSub">Compared to yesterday</span>
     

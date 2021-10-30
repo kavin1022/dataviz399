@@ -16,7 +16,7 @@ import TopBar from "../../component/topBar/TopBar";
 const Home = (props) => {
 
     useEffect(() => {
-        
+
     })
 
     return (
@@ -32,7 +32,7 @@ const Home = (props) => {
                 <div>
                     <TopBar color="white"/> 
                     <h1 className="welcomeMessage">Welcome back, Yu-en Goh</h1>
-                    <FeaturedInfo stepLineData={props.stepLineData}/>
+                    <FeaturedInfo stepLineData={props.stepLineData} sleepLineData={props.sleepLineData} timeInBed={props.timeInBed}/>
                     <StepLineChart stepLineData={props.stepLineData} stepLineLabels={props.stepLineLabels} stepsHome={props.stepsHome} date={props.date} setDate={props.setDate} />
 
                     <div className="HomeRowThree">

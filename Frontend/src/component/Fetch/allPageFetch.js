@@ -1,8 +1,8 @@
 
-const allPageFetch = (date, 
-    setLoading, setDistanceValue, setExerciseValue, setCaloriesValue, setRingLabel, setRingData, setRunTime, setWalkTime, setTotalCalories, setBarLabel, setBarData, setStepValue, 
+const allPageFetch = async(date, 
+    setSleepLoading, setActivLoading,
+    setDistanceValue, setExerciseValue, setCaloriesValue, setRingLabel, setRingData, setRunTime, setWalkTime, setTotalCalories, setBarLabel, setBarData, setStepValue, 
     setTimeInBed, setWentToSleep, setEfficiency, setwakeUp, setSleepStagesData, setSleepLineData, setSleepLineLabel,
-    setStepsHome, setStepLineLabels, setStepLineData
     ) => {
 
     const activitiesUpdate = async() => {
@@ -69,7 +69,8 @@ const allPageFetch = (date,
             setWalkTime(0);
             setRunTime(0);
         }
-        //setLoading(false);
+        setActivLoading(false);
+        console.log("activ loading finished")
     }
 
     const sleepUpdate = async() => {
@@ -105,9 +106,10 @@ const allPageFetch = (date,
             tempLabel.push(x.dateTime.substring(5))
         });
         setSleepLineData(tempData);
-        setSleepLineLabel(tempLabel)
+        setSleepLineLabel(tempLabel);
+        setSleepLoading(false);
+        console.log("sleep loading finished")
     }
-
 
     //Activities Promise
     const stepPromise = fetch("http://localhost:8000/api/activities/getLineChartSteps").then(response => response.json()).then(res => {return res})
@@ -118,13 +120,9 @@ const allPageFetch = (date,
     //Sleep Promise
     const durationPromise = fetch("http://localhost:8000/api/sleep/getsleepduration").then(response => response.json()).then(res => {return res});
 
-    //Home Promise
-    
-
     const proList = [stepPromise, disPromise, exerDurPromise, caloriesPromise, durationPromise]
     Promise.all(proList)
-    .then(() => {
-        //homeUpdate();
+    .then(async() => {
         activitiesUpdate();
         sleepUpdate();
     })
