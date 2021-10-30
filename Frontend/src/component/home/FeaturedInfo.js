@@ -8,6 +8,9 @@ const FeaturedInfo = (props) => {
     const positiveStyle = {color: "green", ffontSize: "1.4em", marginLeft:"10px", marginTop: "1px"};
     const negativeStyle = {color: "red", fontSize: "1.4em", marginLeft:"10px", marginTop: "1px"};
 
+    useEffect(() => {
+        console.log(props.stepLineData[props.stepLineData.length-1])
+    })
 
     const TotalSleepTime = () => {
         return(
@@ -47,8 +50,8 @@ const FeaturedInfo = (props) => {
     
                 <span className="featuredTitle">Steps</span>
                 <div className="featuredStepsContainer">
-                    <span className="featuredSteps">{props.stepsData[0].value}</span>
-                    <PercentageChange dataBefore = {props.stepsData[1].value} dataAfter = {props.stepsData[0].value}/>
+                    <span className="featuredSteps">{props.stepLineData[props.stepLineData.length-1]}</span>
+                    <PercentageChange dataBefore = {props.stepLineData[props.stepLineData.length-1]} dataAfter = {props.stepLineData[props.stepLineData.length-2]}/>
                 </div>
                 <span className="featuredSub">Compared to yesterday</span>
     

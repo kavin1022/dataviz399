@@ -8,108 +8,7 @@ import DatePickerSelf from "../../component/topBar/DatePickerSelf";
 import TopBar from "../../component/topBar/TopBar";
 
 const Activities = (props) => {
-    const [loading, setLoading] = useState(false);
 
-    /* Featured info states*/
-    const [stepValue, setStepValue] = useState();
-    const [distanceValue, setDistanceValue] = useState();
-    const [exerciseValue, setExerciseValue] = useState();
-    const [caloriesValue, setCaloriesValue] = useState();
-
-    /* Ring Chart */
-    const [ringLabel, setRingLabel] = useState(["Running", "Walking"]);
-    const [ringData, setRingData] = useState();
-    const [runTime, setRunTime] = useState(0);
-    const [walkTime, setWalkTime] = useState(0);
-
-    /* Bar Graph */
-    const [totalCalories, setTotalCalories] = useState();
-    const [barLabel, setBarLabel] = useState();
-    const [barData, setBarData] = useState();
-
-    const update = (arr) => {
-        let sum = 0;
-        for (let i=0; i<arr.length; i++){
-            if (arr[i].dateTime.substring(0,10) == props.date){
-                sum += arr[i].value;
-            }
-        }
-        return sum;
-    }
-
-    useEffect(() => {
-        setLoading(true);
-        const stepPromise = fetch("http://localhost:8000/api/activities/getLineChartSteps").then(response => response.json()).then(res => {return res})
-        const disPromise = fetch("http://localhost:8000/api/activities/getdailydistance").then(response => response.json()).then(res => {return res})
-        const exerDurPromise = fetch("http://localhost:8000/api/activities/getAllExerciseDuration/p?day=" + props.date).then(response => response.json()).then(res => {return res})
-        const caloriesPromise = fetch("http://localhost:8000/api/activities/GetDailyCalories").then(response => response.json()).then(res => {return res})
-
-        const proList = [stepPromise, disPromise, exerDurPromise, caloriesPromise]
-        Promise.all(proList)
-        .then(async() => {
-            /* Updating featured info */
-            setStepValue(update(await stepPromise));
-            setDistanceValue(Math.round(update(await disPromise) * 100)/100);
-            setExerciseValue(Math.round(update(await exerDurPromise) * 100)/100);
-            setCaloriesValue(Math.round(update(await caloriesPromise) * 100)/100);
-
-            /* Updating ring chart */
-            const exerList = await exerDurPromise;
-
-            let total = Array.from(exerList.reduce((m, {activityName, value}) => 
-			m.set(activityName, (m.get(activityName) || 0) + value), new Map),
-            ([activityName, value]) => ({activityName, value}));
-
-            let totalButCalories = Array.from(exerList.reduce((m, {activityName, calories}) => 
-			m.set(activityName, (m.get(activityName) || 0) + calories), new Map),
-            ([activityName, calories]) => ({activityName, calories}));
-
-            console.log(exerList);
-            if (exerList.length !== 0){
-                /* For Ring Chart */
-                let tempRingLabel = [];
-                let tempRingData = total.map(x => 0);
-                let tempRunTime = 0;
-                let tempWalkTime = 0;
-                total.map(x => {
-                    tempRingLabel.push(x.activityName);
-                    tempRingData[tempRingLabel.indexOf(x.activityName)] += x.value;
-                    if(x.activityName === "Walk"){tempWalkTime += x.value}
-                    else{
-                        tempRunTime += x.value;
-                    }
-                })
-                setRingLabel(tempRingLabel);
-                setRingData(tempRingData);
-                setWalkTime(tempWalkTime);
-                setRunTime(tempRunTime);
-
-                /* For Bar Graph */
-                let tempBarData = [0, 0];
-                let tempTotalCalories = 0;
-                totalButCalories.map(x => {
-                    if(x.activityName == "Walk"){tempBarData[0] += x.calories;}
-                    else{tempBarData[1] += x.calories};
-                    tempTotalCalories += x.calories;
-                })
-                setTotalCalories(tempTotalCalories);
-                setBarData(tempBarData);
-            }else{
-                setRingData([100]);
-                setRingLabel(["None"]);
-                setTotalCalories(0);
-                setBarData([0, 0]);
-                setWalkTime(0);
-                setRunTime(0);
-            }
-
-            /* Update Calories Bar Graph*/
-            
-
-            setLoading(false);
-        })
-    }, [props.date]);
-      
     return (
         <div className="activities">
             <BackgroudGrey/>
@@ -117,20 +16,20 @@ const Activities = (props) => {
 
             <div className = "zeroRow">
                 <DatePickerSelf date={props.date} setDate={props.setDate}/>
-                {loading && <h2 id="loading">Updating...</h2>}
+                {props.loading && <h2 id="loading">Updating...</h2>}
             </div>
 
             <div className="firstRow">
-                <AFeaturedInfo title = {"Steps"} value={stepValue} sub={"steps"}/>
-                <AFeaturedInfo title = {"Distance"} value={distanceValue} sub={"km"}/>
-                <AFeaturedInfo title = {"Exercise"} value={exerciseValue} sub={"minutes"}/>
-                <AFeaturedInfo title = {"Calories"} value={caloriesValue} sub={"calories burnt"}/>
+                <AFeaturedInfo title = {"Steps"} value={props.stepValue} sub={"steps"}/>
+                <AFeaturedInfo title = {"Distance"} value={props.distanceValue} sub={"km"}/>
+                <AFeaturedInfo title = {"Exercise"} value={props.exerciseValue} sub={"minutes"}/>
+                <AFeaturedInfo title = {"Calories"} value={props.caloriesValue} sub={"calories burnt"}/>
             </div>
 
             <div className="secondRow">
-                <ExerciseRing time={exerciseValue} runTime={runTime} walkTime={walkTime} ringLabel={ringLabel} ringData={ringData} />
+                <ExerciseRing time={props.exerciseValue} runTime={props.runTime} walkTime={props.walkTime} ringLabel={props.ringLabel} ringData={props.ringData} />
 
-                <CaloriesBurntBar totalCalories={totalCalories} barData={barData} barLabel={barLabel}/>
+                <CaloriesBurntBar totalCalories={props.totalCalories} barData={props.barData} barLabel={props.barLabel}/>
             </div>
         </div>
     )

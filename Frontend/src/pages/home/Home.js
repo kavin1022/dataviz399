@@ -14,30 +14,34 @@ import PurpleBack from "../../component/topBar/PurpleBack";
 import TopBar from "../../component/topBar/TopBar";
 
 const Home = (props) => {
-    let {error, isPending, data} = useFetch("http://localhost:8000/api/activities/getLineChartSteps");
+
+    useEffect(() => {
+        
+    })
 
     return (
         <>
-        
-        <PurpleBack/>
-        <div className="home">
-               
-            {isPending && <>
-                              <h1 className="welcomeMessage">Loading...</h1>
-                              <div className="loading"><CircularProgress/></div>
-                          </>}
-            {data && <div>
-                <TopBar color="white"/> 
-                <h1 className="welcomeMessage">Welcome back, Yu-en Goh</h1>
-                <FeaturedInfo stepsData={data}/>
-                <StepLineChart stepsData={data} date={props.date} setDate={props.setDate} />
+            <PurpleBack/>
+            <div className="home">
+                
+                {/*<>
+                    <h1 className="welcomeMessage">Loading...</h1>
+                    <div className="loading"><CircularProgress/></div>
+                </>*/}
 
-                <div className="HomeRowThree">
-                    <ExerciseHomeCom/>
-                    <WaterRing/>
+                <div>
+                    <TopBar color="white"/> 
+                    <h1 className="welcomeMessage">Welcome back, Yu-en Goh</h1>
+                    <FeaturedInfo stepLineData={props.stepLineData}/>
+                    <StepLineChart stepLineData={props.stepLineData} stepLineLabels={props.stepLineLabels} stepsHome={props.stepsHome} date={props.date} setDate={props.setDate} />
+
+                    <div className="HomeRowThree">
+                        <ExerciseHomeCom/>
+                        <WaterRing/>
+                    </div>
                 </div>
-            </div>}
-        </div>
+
+            </div>
         </>
     )
 }

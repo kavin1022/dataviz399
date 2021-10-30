@@ -14,21 +14,18 @@ import { parseISO } from 'date-fns'
 
 const StepLineChart = (props) => {
 
-	const [steps, setSteps] = useState(false);
-	const [labels, setLabels] = useState([""]);
-	const [stepData, setStepData] = useState([0]);
+	useEffect(() => {
 
-	const [date, changeDate] = useState(new Date());
-	//const [dateFilter, setDateFilter] = useState();
+	})
 
 	let data = {
-		labels: labels,
+		labels: props.stepLineLabels,
 		datasets: [{
 		  	label: 'Step Counts',
 		  	backgroundColor: '#060b26',
 		  	borderColor: '#060b26',
 			tension: 0.3,
-		  	data: stepData,
+		  	data: props.stepLineData,
 		}]
 	};
 
@@ -54,17 +51,16 @@ const StepLineChart = (props) => {
 	};
 
 	useEffect(() => {
-		const temp = props.stepsData.slice(0,10).reverse();
-		setLabels(temp.map(x => x.dateTime));
-		setStepData(temp.map(x => x.value));
-		setSteps(temp);
-		console.log(props.date)
+		//const temp = props.stepsData.slice(0,10).reverse();
+		//setLabels(temp.map(x => x.dateTime));
+		//setStepData(temp.map(x => x.value));
+		//setSteps(temp);
 	}, [])
 
 	return(
 		<div className="rowTwo">
 			<div className="lineChartContainer">
-				{steps && <Line data={data} height={50} options={options} />}
+				<Line data={data} height={50} options={options} />
 			</div>
 			<div className="pickerContainer">
 			<LocalizationProvider dateAdapter={AdapterDateFns}>
