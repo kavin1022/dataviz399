@@ -1,3 +1,67 @@
 #c{
-    margin-left: 280px;
+    margin-left: 350px;
+    margin-right: 100px;
 }
+
+#cRowOne{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+#patientSelector{
+    background-color: white;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0,0,0,0.75);
+    width: 46%;
+    height: 25vh;
+}
+
+#sleepSum{
+    border: 1px solid black;
+    width: 46%;
+    height: 25vh;
+}
+
+#cRowTwo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+#cHeartRate{
+    border: 1px solid black;
+    width: 46%;
+    height: 45vh;
+}
+
+#activWellness{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 46%;
+}
+
+#cActive{
+    border: 1px solid black;
+    height: 21vh;
+}
+
+#cWellness{
+    border: 1px solid black;
+    height: 21vh;
+}
+
+#welcomeMessage{
+    color: white;
+    padding-top: 50px;
+}
+
+#patientReminder{
+    color: white;
+    padding-top: 20px;
+}
+

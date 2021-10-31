@@ -2,6 +2,7 @@
   "homepage": "https://dataviz399.herokuapp.com/",
   "name": "dataviz399",
   "version": "0.1.0",
+  "proxy": "http://localhost:8000",
   "private": true,
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
