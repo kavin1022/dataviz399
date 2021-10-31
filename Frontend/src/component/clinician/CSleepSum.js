@@ -13,14 +13,15 @@ const CSleepSum = (props) => {
                     <p className="sleepSub">min</p>
                 </div>
             </div>
+
             <div className="innerSleepSum">
-                
                 <p style={{fontSize: 20, paddingBottom: "10px"}}>Sleep length</p>
                 <div id="sleepLength">
                 <p className="purpleSleepText">7</p> 
                 <p className="sleepSub">%</p>
                 </div>
             </div>
+            
         </div>
 	)
 }

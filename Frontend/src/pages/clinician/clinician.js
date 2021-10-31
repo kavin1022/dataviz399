@@ -3,6 +3,9 @@ import PurpleBack from "../../component/topBar/PurpleBack"
 import BackgroudGrey from "../../component/topBar/BackgroundGrey"
 import PatientSelector from "../../component/clinician/PatientSelector"
 import CSleepSum from "../../component/clinician/CSleepSum"
+import CHeartRate from "../../component/clinician/CHeartRate"
+import CActiv from "../../component/clinician/CActiv"
+import CWellness from "../../component/clinician/CWellness"
 
 const Clinician = () => {
     return (
@@ -25,14 +28,14 @@ const Clinician = () => {
 
                     <div id="cRowTwo">
                         <div id="cHeartRate">
-                            HeartRate
+                            <CHeartRate/>
                         </div>
                         <div id="activWellness">
                             <div id="cActive">
-                                Activ
+                                <CActiv steps={2328} exerciseTime={56} caloriesBurnt={550}/>
                             </div>
                             <div id="cWellness">
-                                Wellness
+                                <CWellness/>
                             </div>
                         </div>
                     </div>

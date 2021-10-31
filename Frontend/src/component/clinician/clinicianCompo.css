@@ -51,3 +51,33 @@
     margin-left: 10px;
     padding-bottom: 5px;
 }
+
+#CHeartRateContent{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: stretch;
+}
+
+.innerHeartRow{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#CActivContent{
+    display: flex;
+    height: 100%;
+    align-content: stretch;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#CWellnessContent{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
