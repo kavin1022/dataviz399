@@ -12,7 +12,7 @@ const Activities = (props) => {
     return (
         <div className="activities">
             <BackgroudGrey/>
-            <TopBar color="#5F6AC4"/>
+            <TopBar color="#5F6AC4" setLoggedIn={props.setLoggedIn} />
 
             <div className = "zeroRow">
                 <DatePickerSelf date={props.date} setDate={props.setDate}/>

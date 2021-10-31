@@ -14,11 +14,9 @@
 	import axios from "axios";
 	import CircularProgress from '@material-ui/core/CircularProgress';
 	import { useState } from 'react';
-import setDate from 'date-fns/setDate';
 
 	function Copyright(props) {
 
-		
 	return (
 		<Typography variant="body2" color="text.secondary" align="center" {...props}>
 		{'Copyright © '}

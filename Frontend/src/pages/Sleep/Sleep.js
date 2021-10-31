@@ -12,7 +12,7 @@ const Sleep = (props) => {
 
     return (
         <div className="sleep">
-            <TopBar color="#5F6AC4"/> 
+            <TopBar color="#5F6AC4" setLoggedIn={props.setLoggedIn} /> 
             <DatePickerSelf date={props.date} setDate={props.setDate} />
         
             <div className="sleepRowOne">

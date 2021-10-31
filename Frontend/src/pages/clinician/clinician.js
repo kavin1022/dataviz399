@@ -6,10 +6,12 @@ import CSleepSum from "../../component/clinician/CSleepSum"
 import CHeartRate from "../../component/clinician/CHeartRate"
 import CActiv from "../../component/clinician/CActiv"
 import CWellness from "../../component/clinician/CWellness"
+import TopBar from "../../component/topBar/TopBar"
 
-const Clinician = () => {
+const Clinician = (props) => {
     return (
         <>
+            <TopBar color="white" setLoggedIn={props.setLoggedIn} />
             <BackgroudGrey/>
             <PurpleBack/>
             <div id="c">

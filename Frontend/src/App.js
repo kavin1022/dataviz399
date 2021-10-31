@@ -9,7 +9,6 @@ import HeartRate from './pages/HeartRate';
 import Nutrition from './pages/Nutrition';
 import Sleep from './pages/Sleep/Sleep';
 import Wellness from './pages/Wellness';
-import PurpleBack from './component/topBar/PurpleBack';
 import SignIn from './pages/SignIn';
 import Register from './pages/Register';
 import Clinician from './pages/clinician/clinician';
@@ -84,7 +83,7 @@ function App() {
 			{(sleepLoading && homeLoading && activLoading) && <div className="loading"><CircularProgress/></div>}
 
 			<Router>
-				{loggedIn && <Navbar/>}
+				{loggedIn && <Navbar/> }
 				<Switch>
 					<Route path="/login" exact render={() => <SignIn setLoggedIn={setLoggedIn} setDate={setDate} />} />
 					<Route path="/register" exact component={Register} />
@@ -100,6 +99,7 @@ function App() {
 								sleepLineData={sleepLineData}
 								timeInBed={timeInBed}
 								homeTotalCalories={homeTotalCalories}
+								setLoggedIn={setLoggedIn}
 							/>} 
 						/>
 
@@ -118,13 +118,26 @@ function App() {
 								totalCalories={totalCalories}
 								barLabel={barLabel}
 								barData={barData}
+								setLoggedIn={setLoggedIn}
 							/>
 						}/>
 
 						<Route path="/heartrate" component={HeartRate}/>
 
-						<Route path="/nutrition" component={Clinician}/>
-
+						<Route path="/nutrition" render={() => 
+							<Clinician
+								date={date} 
+								setDate={setDate} 
+								efficiency={efficiency} 
+								wentToSleep={wentToSleep} 
+								wakeUp={wakeUp}
+								timeInBed={timeInBed}
+								sleepLineLabel={sleepLineLabel}
+								sleepLineData={sleepLineData}
+								sleepStagesData={sleepStagesData}
+								setLoggedIn={setLoggedIn}
+							/>
+						}/>
 						<Route path="/sleep" render={() => 
 							<Sleep 
 								date={date} 
@@ -136,6 +149,7 @@ function App() {
 								sleepLineLabel={sleepLineLabel}
 								sleepLineData={sleepLineData}
 								sleepStagesData={sleepStagesData}
+								setLoggedIn={setLoggedIn}
 							/>
 						}/>
 
