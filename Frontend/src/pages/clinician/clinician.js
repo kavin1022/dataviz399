@@ -2,6 +2,7 @@ import "./clinician.css"
 import PurpleBack from "../../component/topBar/PurpleBack"
 import BackgroudGrey from "../../component/topBar/BackgroundGrey"
 import PatientSelector from "../../component/clinician/PatientSelector"
+import CSleepSum from "../../component/clinician/CSleepSum"
 
 const Clinician = () => {
     return (
@@ -18,7 +19,7 @@ const Clinician = () => {
                             <PatientSelector/>
                         </div>
                         <div id="sleepSum">
-                            Sleep Sum
+                            <CSleepSum/>
                         </div>
                     </div>
 
