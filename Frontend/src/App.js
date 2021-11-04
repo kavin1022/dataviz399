@@ -39,6 +39,7 @@ function App() {
     const [sleepLineLabel, setSleepLineLabel] = useState(0);
     const [sleepLineData, setSleepLineData] = useState(0);
     const [sleepStagesData, setSleepStagesData] = useState(0);
+	const [sleepLineDaysNumber, setSleepLineDaysNumber] = useState(7);
 
 	/* Activities States */
     // Featured info states
@@ -73,13 +74,13 @@ function App() {
 			await allPageFetch(date, 
 				setSleepLoading, setActivLoading,
 				setDistanceValue, setExerciseValue, setCaloriesValue, setRingLabel, setRingData, setRunTime, setWalkTime, setTotalCalories, setBarLabel, setBarData, setStepValue,
-				setTimeInBed, setWentToSleep, setEfficiency, setwakeUp, setSleepStagesData, setSleepLineData, setSleepLineLabel, setHomeTotalCalories
+				setTimeInBed, setWentToSleep, setEfficiency, setwakeUp, setSleepStagesData, setSleepLineData, setSleepLineLabel, setHomeTotalCalories, sleepLineDaysNumber
 			);
 			await homeFetch(date, setHomeLoading, setStepsHome, setStepLineLabels, setStepLineData);
 				
 			console.log(sleepLoading && homeLoading && activLoading);
 		}
-	},[date])
+	},[date, sleepLineDaysNumber])
 
 	return (
 		<div>
@@ -155,6 +156,7 @@ function App() {
 								sleepLineData={sleepLineData}
 								sleepStagesData={sleepStagesData}
 								setLoggedIn={setLoggedIn}
+								setSleepLineDaysNumber = {setSleepLineDaysNumber}
 							/>
 						}/>
 

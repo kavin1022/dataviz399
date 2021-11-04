@@ -2,7 +2,7 @@
 const allPageFetch = async(date, 
     setSleepLoading, setActivLoading,
     setDistanceValue, setExerciseValue, setCaloriesValue, setRingLabel, setRingData, setRunTime, setWalkTime, setTotalCalories, setBarLabel, setBarData, setStepValue, 
-    setTimeInBed, setWentToSleep, setEfficiency, setwakeUp, setSleepStagesData, setSleepLineData, setSleepLineLabel, setHomeTotalCalories
+    setTimeInBed, setWentToSleep, setEfficiency, setwakeUp, setSleepStagesData, setSleepLineData, setSleepLineLabel, setHomeTotalCalories, sleepLineDaysNumber
     ) => {
 
     const activitiesUpdate = async() => {
@@ -111,7 +111,7 @@ const allPageFetch = async(date,
 
         let tempData = [];
         let tempLabel = [];
-        sleepInfo.slice(dateIndex - 6, dateIndex + 1).map(x => {
+        sleepInfo.slice(dateIndex - sleepLineDaysNumber + 1, dateIndex + 1).map(x => {
             tempData.push(x.duration);
             tempLabel.push(x.dateTime.substring(5))
         });

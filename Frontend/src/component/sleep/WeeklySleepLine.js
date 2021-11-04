@@ -5,13 +5,6 @@ import {Line} from "react-chartjs-2";
 
 const WeeklySleepLine = (props) => {
 
-	const [sleepHours, setsleepHours] = useState(false);
-	const [labels, setLabels] = useState([""]);
-	const [sleepData, setsleepData] = useState([0]);
-
-	const [date, changeDate] = useState(new Date());
-	//const [dateFilter, setDateFilter] = useState();
-
 	let data = {
 		labels: props.label,
 		datasets: [{

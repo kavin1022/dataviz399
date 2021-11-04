@@ -7,6 +7,7 @@ import SleepFeaturedInfo from "../../component/sleep/SleepFeaturedInfo";
 import WeeklySleepLine from  "../../component/sleep/WeeklySleepLine"
 import TopBar from "../../component/topBar/TopBar";
 import { useEffect, useState } from "react";
+import RangePicker from "../../component/sleep/RangePicker";
 
 const Sleep = (props) => {
 
@@ -26,6 +27,7 @@ const Sleep = (props) => {
                 <WeeklySleepLine data={props.sleepLineData} label={props.sleepLineLabel} />
                 <SleepStageRing data={props.sleepStagesData}/>
             </div>
+            <div id="sleepRangePickerContainer"><RangePicker setSleepLineDaysNumber={props.setSleepLineDaysNumber} /></div>
 
         </div>
     )
