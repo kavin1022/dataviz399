@@ -23,9 +23,13 @@ function App() {
 
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [date, setDate] = useState("2020-03-31");
+	const [clinicianMode, setClinicianMode] = useState(false);
+
+	/* If Loading */
 	const [homeLoading, setHomeLoading] = useState(false);
 	const [sleepLoading, setSleepLoading] = useState(false);
 	const [activLoading, setActivLoading] = useState(false);
+	
 
 	/* Sleep States */
 	const [efficiency, setEfficiency] = useState(0);
@@ -83,9 +87,9 @@ function App() {
 			{(sleepLoading && homeLoading && activLoading) && <div className="loading"><CircularProgress/></div>}
 
 			<Router>
-				{loggedIn && <Navbar/> }
+				{loggedIn && <Navbar mode={clinicianMode}/> }
 				<Switch>
-					<Route path="/login" exact render={() => <SignIn setLoggedIn={setLoggedIn} setDate={setDate} />} />
+					<Route path="/login" exact render={() => <SignIn setLoggedIn={setLoggedIn} setDate={setDate} setClinicianMode={setClinicianMode} />} />
 					<Route path="/register" exact component={Register} />
 
 						{!sleepLoading && !homeLoading && !activLoading && <div>
@@ -124,17 +128,18 @@ function App() {
 
 						<Route path="/heartrate" component={HeartRate}/>
 
-						<Route path="/nutrition" render={() => 
+						<Route path="/clinician-summary" render={() => 
 							<Clinician
 								date={date} 
 								setDate={setDate} 
 								efficiency={efficiency} 
-								wentToSleep={wentToSleep} 
-								wakeUp={wakeUp}
 								timeInBed={timeInBed}
-								sleepLineLabel={sleepLineLabel}
-								sleepLineData={sleepLineData}
-								sleepStagesData={sleepStagesData}
+
+								stepValue={stepValue}
+								exerciseValue={exerciseValue}
+								caloriesValue={caloriesValue}
+
+								setHomeLoading={setHomeLoading}
 								setLoggedIn={setLoggedIn}
 							/>
 						}/>

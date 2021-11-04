@@ -3,13 +3,10 @@ import { styled, alpha } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import EditIcon from '@mui/icons-material/Edit';
-import Divider from '@mui/material/Divider';
-import ArchiveIcon from '@mui/icons-material/Archive';
-import FileCopyIcon from '@mui/icons-material/FileCopy';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import axios from "axios";
+import { useHistory } from 'react-router-dom';
 
 const StyledMenu = styled((props) => (
 	<Menu
@@ -52,13 +49,36 @@ const StyledMenu = styled((props) => (
 	},
 }));
 
-export default function CustomizedMenus() {
+export default function CustomizedMenus(props) {
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
+	const history = useHistory();
+
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget);
 	};
-	const handleClose = () => {
+
+	const handleLogin = (pName) => {
+		props.setChangingPatient(true);
+		const body = {
+			username: pName,
+			password: pName
+		}
+		axios.post("http://localhost:8000/api/auth/login", body)
+		.then(res => {
+			console.log(res);
+			if (res.data.message == "login success"){
+				props.setDate("2020-03-31")
+				props.setChangingPatient(false);
+				history.push("/clinician-summary")
+			}else{
+				alert("An Error Occured")
+			}
+			
+		})
+	}
+
+	const handleClose = (pName) => {
 		setAnchorEl(null);
 	};
 
@@ -85,19 +105,19 @@ export default function CustomizedMenus() {
 				open={open}
 				onClose={handleClose}
 			>
-				<MenuItem onClick={handleClose} disableRipple>
+				<MenuItem onClick={() => handleLogin("p01")} disableRipple>
 					<AssignmentIndIcon />
 					Patient 1
 				</MenuItem>
-				<MenuItem onClick={handleClose} disableRipple>
+				<MenuItem onClick={() =>handleLogin("p02")} disableRipple>
 					<AssignmentIndIcon />
 					Patient 2
 				</MenuItem>
-				<MenuItem onClick={handleClose} disableRipple>
+				<MenuItem onClick={() =>handleLogin("p03")} disableRipple>
 					<AssignmentIndIcon />
 					Patient 3
 				</MenuItem>
-				<MenuItem onClick={handleClose} disableRipple>
+				<MenuItem onClick={() =>handleLogin("p04")} disableRipple>
 					<AssignmentIndIcon />
 					Patient 4
 				</MenuItem>

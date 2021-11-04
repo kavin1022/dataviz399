@@ -9,7 +9,7 @@ const FeaturedInfo = (props) => {
     const negativeStyle = {color: "red", fontSize: "1.4em", marginLeft:"10px", marginTop: "1px"};
 
     useEffect(() => {
-        console.log(props.sleepLineData[props.sleepLineData.length-1])
+        
     })
 
     const TotalSleepTime = () => {

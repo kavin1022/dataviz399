@@ -2,10 +2,11 @@ import React from "react"
 import * as MdIcon from "react-icons/md";
 import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
+import { CSidebarData } from "./CSidebarData";
 import "./Navbar.css";
 import { IconContext } from "react-icons/lib";
 
-const Navbar = () => {
+const Navbar = (props) => {
     return (
         <>
         <IconContext.Provider value={{color: "#fff"}}>
@@ -18,7 +19,17 @@ const Navbar = () => {
                             </Link>
                         </div>
                     </li>
-                    {SidebarData.map((item, index) =>{
+                    {props.mode && SidebarData.map((item, index) =>{
+                        return(
+                            <li key={item.title} className={item.cName}>
+                                <Link to={item.path}>
+                                    {item.icon}
+                                    <span>{item.title}</span>
+                                </Link>
+                            </li>
+                        )
+                    })}
+                    {!props.mode && CSidebarData.map((item, index) =>{
                         return(
                             <li key={item.title} className={item.cName}>
                                 <Link to={item.path}>

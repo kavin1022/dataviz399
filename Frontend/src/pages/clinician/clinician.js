@@ -7,10 +7,16 @@ import CHeartRate from "../../component/clinician/CHeartRate"
 import CActiv from "../../component/clinician/CActiv"
 import CWellness from "../../component/clinician/CWellness"
 import TopBar from "../../component/topBar/TopBar"
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { useState } from "react"
+
 
 const Clinician = (props) => {
+    const [changingPatient, setChangingPatient] = useState(false);
     return (
-        <>
+        <>  
+            {changingPatient && <div className="loading"><CircularProgress/></div>}
+
             <TopBar color="white" setLoggedIn={props.setLoggedIn} />
             <BackgroudGrey/>
             <PurpleBack/>
@@ -21,10 +27,10 @@ const Clinician = (props) => {
                 <div id="cContentWrapper">
                     <div id="cRowOne">
                         <div id="patientSelector">
-                            <PatientSelector/>
+                            <PatientSelector setDate={props.setDate} setHomeLoading={props.setHomeLoading} setChangingPatient={setChangingPatient} />
                         </div>
                         <div id="sleepSum">
-                            <CSleepSum/>
+                            <CSleepSum length={props.timeInBed} efficiency={props.efficiency} />
                         </div>
                     </div>
 
@@ -34,7 +40,7 @@ const Clinician = (props) => {
                         </div>
                         <div id="activWellness">
                             <div id="cActive">
-                                <CActiv steps={2328} exerciseTime={56} caloriesBurnt={550}/>
+                                <CActiv steps={props.stepValue} exerciseTime={props.exerciseValue} caloriesBurnt={props.caloriesValue}/>
                             </div>
                             <div id="cWellness">
                                 <CWellness/>

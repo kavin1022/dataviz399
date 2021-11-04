@@ -16,7 +16,7 @@ import TopBar from "../../component/topBar/TopBar";
 const Home = (props) => {
 
     useEffect(() => {
-        console.log(props.homeTotalCalories);
+        
     })
 
     return (

@@ -31,16 +31,22 @@ export default class authController {
         
         User.findOne({username:username},(err,user)=>{
             if(user){
-               if(password === user.password){
-                    const a = StepDAO.injectDB(user.username);
-                    const b = exerciseDAO.injectDB(user.username);
-                    const c = distanceDAO.injectDB(user.username);
-                    const d = caloriesDAO.injectDB(user.username);
-                    const f = sleepDAO.injectDB(user.username);
+                if(password === user.password){
+                    let uname;
+                    if (user.username === "c01"){
+                        uname = "p01";
+                    }else{
+                        uname = user.username;
+                    }
+                    const a = StepDAO.injectDB(uname);
+                    const b = exerciseDAO.injectDB(uname);
+                    const c = distanceDAO.injectDB(uname);
+                    const d = caloriesDAO.injectDB(uname);
+                    const f = sleepDAO.injectDB(uname);
                     Promise.all([a, b, c, d, f])
                     .then(() => {
                         res.send({message:"login success",user:user});
-                    })
+                        })
                }else{
                    res.send({message:"wrong credentials"})
                }

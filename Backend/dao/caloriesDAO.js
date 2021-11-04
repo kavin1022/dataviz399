@@ -4,11 +4,12 @@ let calories, m;
 export default class caloriesDAO {
 
 	static async injectDB(id) {
-		const schemaName = id + "calories";
+		let schemaName = id + "calories";
 		let Schema = mongoose.Schema;
 		try{
 			m = mongoose.model(schemaName);
 		}catch(error){
+			console.log(error);
 			m = mongoose.model(schemaName, new Schema({
 				dateTime: {
 					type: Date,

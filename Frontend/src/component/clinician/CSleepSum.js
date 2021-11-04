@@ -7,17 +7,14 @@ const CSleepSum = (props) => {
             <div className="innerSleepSum">
                 <p style={{fontSize: 20, paddingBottom: "10px"}}>Sleep length</p>
                 <div id="sleepHour">
-                    <p className="purpleSleepText">7</p> 
-                    <p className="sleepSub">hr</p>
-                    <p className="purpleSleepText">8</p> 
-                    <p className="sleepSub">min</p>
+                    <p className="purpleSleepText">{props.length}</p> 
                 </div>
             </div>
 
             <div className="innerSleepSum">
-                <p style={{fontSize: 20, paddingBottom: "10px"}}>Sleep length</p>
+                <p style={{fontSize: 20, paddingBottom: "10px"}}>Sleep Efficiency</p>
                 <div id="sleepLength">
-                <p className="purpleSleepText">7</p> 
+                <p className="purpleSleepText">{props.efficiency}</p> 
                 <p className="sleepSub">%</p>
                 </div>
             </div>

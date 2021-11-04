@@ -9,6 +9,7 @@ export default class StepDAO {
 		try{
 			m = mongoose.model(schemaName);
 		}catch(error){
+			console.log(error)
 			m = mongoose.model(schemaName, new Schema({
 				dateTime: {
 					type: Date,

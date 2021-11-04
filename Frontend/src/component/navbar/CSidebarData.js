@@ -1,13 +1,7 @@
 import React from "react";
 import * as MdIcon from "react-icons/md";
 
-export const SidebarData = [
-    {
-        title: "Summary",
-        path: "/clinician-summary",
-        icon: <MdIcon.MdHome color="#676767"/>,
-        cName: "nav-text"
-    },
+export const CSidebarData = [
     {
         title: "Home",
         path: "/",

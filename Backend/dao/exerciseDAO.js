@@ -30,6 +30,7 @@ export default class exerciseDAO {
 				hasGps: {type: Boolean},
 				shouldFetchDetails: {type: Boolean},
 			}), schemaName)
+			m = mongoose.model(schemaName);
 		}
 
 		exercise = await m.find();
