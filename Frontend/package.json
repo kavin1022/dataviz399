@@ -1,5 +1,5 @@
 {
-  "homepage": "https://dataviz399.herokuapp.com/",
+  "homepage": "https://dataviz399.herokuapp.com/login",
   "name": "dataviz399",
   "version": "0.1.0",
   "proxy": "http://localhost:8000",

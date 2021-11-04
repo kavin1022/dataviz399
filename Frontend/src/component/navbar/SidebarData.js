@@ -21,12 +21,6 @@ export const SidebarData = [
         cName: "nav-text"
     },
     {
-        title: "Nutrition",
-        path: "/nutrition",
-        icon: <MdIcon.MdRestaurant color="#676767"/>,
-        cName: "nav-text"
-    },
-    {
         title: "Sleep",
         path: "/sleep",
         icon: <MdIcon.MdLocalHotel color="#676767"/>,

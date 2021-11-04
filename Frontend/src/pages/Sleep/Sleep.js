@@ -25,7 +25,7 @@ const Sleep = (props) => {
 
             <div className="sleepRowTwo">
                 <WeeklySleepLine data={props.sleepLineData} label={props.sleepLineLabel} />
-                <SleepStageRing data={props.sleepStagesData}/>https://mail.google.com/mail/u/0/#inbox?projector=1
+                <SleepStageRing data={props.sleepStagesData}/>
             </div>
             <div id="sleepRangePickerContainer"><RangePicker setSleepLineDaysNumber={props.setSleepLineDaysNumber} /></div>
 
