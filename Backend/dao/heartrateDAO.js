@@ -1,32 +1,27 @@
 import mongoose from "mongoose"
-let calories, m;
+let heartRate, m;
 
-export default class caloriesDAO {
+export default class heartrateDAO {
 
 	static async injectDB(id) {
-		let schemaName = id + "calories";
+		let schemaName = id + "heartrate";
 		let Schema = mongoose.Schema;
 		try{
 			m = mongoose.model(schemaName);
 		}catch(error){
 			m = mongoose.model(schemaName, new Schema({
-				dateTime: {
-					type: Date,
-					required: true
-				},
-				value: {
-					type: Number,
-					required: true
-				}
+				dateTime_start: {type: String,},
+				dateTime_end: {type: String},
+				value: {type: Object}
 			}), schemaName)
 		}
-		calories = await m.find();
+		heartRate = await m.find();
 		return true;
 	}
 
-	static async getAllCalories(req, res, next) {
+	static async getAllHeartRate(req, res, next) {
 		try {
-		  	return calories
+		  	return heartRate
 		} catch (e) {
 		  	console.log(`api, ${e}`)
 		  	res.status(500).json({ error: e })

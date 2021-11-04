@@ -36,7 +36,7 @@ const Clinician = (props) => {
 
                     <div id="cRowTwo">
                         <div id="cHeartRate">
-                            <CHeartRate/>
+                            <CHeartRate avg={props.avgHeartRate} min={props.minHeartRate} max={props.maxHeartRate} total={props.totalHeartRate} />
                         </div>
                         <div id="activWellness">
                             <div id="cActive">

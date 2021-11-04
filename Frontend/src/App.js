@@ -64,6 +64,11 @@ function App() {
 	const [stepLineData, setStepLineData] = useState([0]);
 	const [homeTotalCalories, setHomeTotalCalories] = useState(0);
 
+	/* Clinician States */
+	const [minHeartRate, setMinHeartRate] = useState(0);
+	const [maxHeartRate, setMaxHeartRate] = useState(0);
+	const [avgHeartRate, setAvgHeartRate] = useState(0);
+	const [totalHeartRate, setTotalHeartRate] = useState(0);
 
 	useEffect(async() => {
 		if (loggedIn){
@@ -76,9 +81,8 @@ function App() {
 				setDistanceValue, setExerciseValue, setCaloriesValue, setRingLabel, setRingData, setRunTime, setWalkTime, setTotalCalories, setBarLabel, setBarData, setStepValue,
 				setTimeInBed, setWentToSleep, setEfficiency, setwakeUp, setSleepStagesData, setSleepLineData, setSleepLineLabel, setHomeTotalCalories, sleepLineDaysNumber
 			);
-			await homeFetch(date, setHomeLoading, setStepsHome, setStepLineLabels, setStepLineData);
+			await homeFetch(date, setHomeLoading, setStepsHome, setStepLineLabels, setStepLineData, setMinHeartRate, setMaxHeartRate, setAvgHeartRate, setTotalHeartRate);
 				
-			console.log(sleepLoading && homeLoading && activLoading);
 		}
 	},[date, sleepLineDaysNumber])
 
@@ -139,6 +143,11 @@ function App() {
 								stepValue={stepValue}
 								exerciseValue={exerciseValue}
 								caloriesValue={caloriesValue}
+
+								minHeartRate={minHeartRate}
+								maxHeartRate={maxHeartRate}
+								avgHeartRate={avgHeartRate}
+								totalHeartRate={totalHeartRate}
 
 								setHomeLoading={setHomeLoading}
 								setLoggedIn={setLoggedIn}

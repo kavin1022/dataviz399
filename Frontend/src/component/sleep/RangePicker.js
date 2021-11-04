@@ -91,19 +91,19 @@ export default function RangePicker(props) {
 			>
 				<MenuItem onClick={() => handleDayDisplayChange(7)} disableRipple>
 					<CalendarTodayIcon />
-					7
+					7 Days
 				</MenuItem>
 				<MenuItem onClick={() =>handleDayDisplayChange(14)} disableRipple>
 					<CalendarTodayIcon />
-					14
+					30 Days
 				</MenuItem>
 				<MenuItem onClick={() =>handleDayDisplayChange(30)} disableRipple>
 					<CalendarTodayIcon />
-					30
+					60 Days
 				</MenuItem>
 				<MenuItem onClick={() =>handleDayDisplayChange(60)} disableRipple>
 					<CalendarTodayIcon />
-					60
+					90 Days
 				</MenuItem>
 			</StyledMenu>
 		</div>
