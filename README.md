@@ -6,7 +6,17 @@ This project is a software application with different dashboard interfaces for i
 
 You'll need the latest LTS version of Node from https://nodejs.org/en/
 
+
+
 All following command are run with Powershell (Windows), Terminal (Linux), and Terminal (MacOS)
+
+### Method 1 - Script Files
+
+This Github repo comes with two prewritten Powershell script file for Windows that installs and launch the application automatically. 
+
+Please run **install.ps1** first to install the dependencies, and then run **start.ps1** to start the server and client. 
+
+### Method 2 - PowerShell/Terminal
 
 If you're installing this application for the first time, please run
 
