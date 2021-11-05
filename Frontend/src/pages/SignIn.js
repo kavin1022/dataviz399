@@ -15,20 +15,6 @@ import axios from "axios";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useState } from 'react';
 
-	function Copyright(props) {
-
-	return (
-		<Typography variant="body2" color="text.secondary" align="center" {...props}>
-		{'Copyright © '}
-		<Link color="inherit" href="https://material-ui.com/">
-			Your Website
-		</Link>{' '}
-		{new Date().getFullYear()}
-		{'.'}
-		</Typography>
-	);
-	}
-
 	const theme = createTheme();
 
 	export default function SignIn(props) {
@@ -47,15 +33,15 @@ import { useState } from 'react';
 			axios.post("http://localhost:8000/api/auth/login", body)
 			.then(res => {
 				console.log(res);
-				if (res.data.message == "login success"){
+				if (res.data.message === "login success"){
 					alert("login success")
 					props.setLoggedIn(true);
 					props.setDate("2020-03-30")
-					if(data.get("email") == "c01"){props.setClinicianMode(true)}
+					if(data.get("email") === "c01"){props.setClinicianMode(true)}
 					else{props.setClinicianMode(false)};
 
 					history.push("/")
-				}else if(res.data.message == "wrong credentials"){
+				}else if(res.data.message === "wrong credentials"){
 					alert("Incorrect Password")
 				}else{
 					alert("An Error Occured")

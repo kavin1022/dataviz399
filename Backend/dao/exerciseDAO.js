@@ -39,7 +39,7 @@ export default class exerciseDAO {
 
 	static async getAllExercises(req, res, next) {
 		try {
-		  	return(exercise)
+		  	return exercise
 		} catch (e) {
 		  	console.log(`api, ${e}`)
 		  	res.status(500).json({ error: e })

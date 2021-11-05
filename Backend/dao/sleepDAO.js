@@ -33,8 +33,7 @@ export default class sleepDAO {
 
 	static async getAllSleeps(req, res, next) {
 		try {
-			let newsleeps = sleep
-		  	return(newsleeps)
+		  	return sleep
 		} catch (e) {
 		  	console.log(`api, ${e}`)
 		  	res.status(500).json({ error: e })

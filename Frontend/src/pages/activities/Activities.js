@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./activities.css"
 import ExerciseRing from "../../component/activities/ExerciseRing";
 import AFeaturedInfo from "../../component/activities/AFeaturedInfo"

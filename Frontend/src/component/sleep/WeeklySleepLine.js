@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "./WeeklySleepLine.css";
 import {Line} from "react-chartjs-2";
 

@@ -1,15 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./stepLineChart.css";
 import {Line} from "react-chartjs-2";
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import CalendarPicker from '@mui/lab/CalendarPicker';
-import MonthPicker from '@mui/lab/MonthPicker';
-import YearPicker from '@mui/lab/YearPicker';
-import Grid from '@mui/material/Grid';
 import {format} from "date-fns"
 import TextField from '@mui/material/TextField';
-import { parseISO } from 'date-fns' 
 
 
 const StepLineChart = (props) => {

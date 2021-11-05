@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./topBar.css";
 import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';

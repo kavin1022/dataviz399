@@ -13,7 +13,7 @@ const PercentageChange = (props) => {
         const pc = (Math.round((props.dataAfter/props.dataBefore -1) * 100))
         setPercentageChange(pc);
         setPositive((pc > 0 ? true : false));
-    })
+    }, [props.dataAfter, props.dataBefore])
 
     return(
         <>

@@ -1,6 +1,4 @@
 import "./SleepFeaturedInfo.css";
-import { useEffect, useState } from "react";
-import * as MdIcon from "react-icons/md";
 
 const SleepFeaturedInfo = (props) => {
 

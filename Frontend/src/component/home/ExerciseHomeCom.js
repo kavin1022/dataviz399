@@ -1,4 +1,3 @@
-import { fontSize } from "@mui/system"
 import "./exerciseHomeCom.css"
 const ExerciseHomeCom = () => {
     const numberStyle = {

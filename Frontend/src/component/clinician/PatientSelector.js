@@ -7,7 +7,7 @@ const PatientSelector = (props) => {
 	return(
         <div id="patientSelectorContent">
             <p id="vp">View data for patient : </p>
-            <CustomizedMenus setDate={props.setDate} setChangingPatient={props.setChangingPatient} />
+            <CustomizedMenus date={props.date} setDate={props.setDate} setChangingPatient={props.setChangingPatient} />
         </div>
 	)
 }

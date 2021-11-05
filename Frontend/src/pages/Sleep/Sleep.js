@@ -1,12 +1,10 @@
 import React from "react";
 import "./sleep.css"
-import SleepAnalysis from "../../component/sleep/SleepAnalysis";
 import SleepStageRing from "../../component/sleep/SleepStageRing";
 import DatePickerSelf from "../../component/topBar/DatePickerSelf"
 import SleepFeaturedInfo from "../../component/sleep/SleepFeaturedInfo";
 import WeeklySleepLine from  "../../component/sleep/WeeklySleepLine"
 import TopBar from "../../component/topBar/TopBar";
-import { useEffect, useState } from "react";
 import RangePicker from "../../component/sleep/RangePicker";
 
 const Sleep = (props) => {

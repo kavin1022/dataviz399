@@ -7,7 +7,6 @@ const homeFetch = async(date, setHomeLoading, setStepsHome, setStepLineLabels, s
     .then(async() => {
         let data = (await stepLinePromise).reverse()
         let heartRateData = await heartRatePromise
-        console.log(heartRateData)
         for (let i = 0; i < data.length; i ++){
             if (data[i].dateTime === date){
                 let temp = data.slice(i - 9, i + 1)
@@ -19,7 +18,7 @@ const homeFetch = async(date, setHomeLoading, setStepsHome, setStepLineLabels, s
             }
         }
         
-        let min = heartRateData[0].value.avg_bpm;
+        let min = 200;
         let max = 0;
         let total = 0;
         let curr;
@@ -30,8 +29,8 @@ const homeFetch = async(date, setHomeLoading, setStepsHome, setStepLineLabels, s
             if (curr < min){min = curr};
         }
 
-        setMinHeartRate(min);
-        setMaxHeartRate(max);
+        setMinHeartRate(Math.round(min));
+        setMaxHeartRate(Math.round(max));
         setAvgHeartRate(Math.round(total / 24));
         setTotalHeartRate(Math.round(total));
 

@@ -1,14 +1,11 @@
 import './App.css';
 import React, { useEffect, useState } from "react"
 import Navbar from "./component/navbar/Navbar"
-import TopBar from './component/topBar/TopBar';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from './pages/home/Home';
 import Activities from "./pages/activities/Activities"
 import HeartRate from './pages/HeartRate';
-import Nutrition from './pages/Nutrition';
 import Sleep from './pages/Sleep/Sleep';
-import Wellness from './pages/Wellness';
 import SignIn from './pages/SignIn';
 import Register from './pages/Register';
 import Clinician from './pages/clinician/clinician';
@@ -28,6 +25,7 @@ function App() {
 	/* If Loading */
 	const [homeLoading, setHomeLoading] = useState(false);
 	const [sleepLoading, setSleepLoading] = useState(false);
+	
 	const [activLoading, setActivLoading] = useState(false);
 	
 
@@ -70,21 +68,26 @@ function App() {
 	const [avgHeartRate, setAvgHeartRate] = useState(0);
 	const [totalHeartRate, setTotalHeartRate] = useState(0);
 
-	useEffect(async() => {
-		if (loggedIn){
-			setSleepLoading(true);
-			setHomeLoading(true);
-			setActivLoading(true);
-			
-			await allPageFetch(date, 
-				setSleepLoading, setActivLoading,
-				setDistanceValue, setExerciseValue, setCaloriesValue, setRingLabel, setRingData, setRunTime, setWalkTime, setTotalCalories, setBarLabel, setBarData, setStepValue,
-				setTimeInBed, setWentToSleep, setEfficiency, setwakeUp, setSleepStagesData, setSleepLineData, setSleepLineLabel, setHomeTotalCalories, sleepLineDaysNumber
-			);
-			await homeFetch(date, setHomeLoading, setStepsHome, setStepLineLabels, setStepLineData, setMinHeartRate, setMaxHeartRate, setAvgHeartRate, setTotalHeartRate);
+	useEffect(() => {
+		const fetchData = async() => {
+			console.log(loggedIn);
+			if (loggedIn){
+				console.log("i ran")
+				setSleepLoading(true);
+				setHomeLoading(true);
+				setActivLoading(true);
 				
+				await allPageFetch(date, 
+					setSleepLoading, setActivLoading,
+					setDistanceValue, setExerciseValue, setCaloriesValue, setRingLabel, setRingData, setRunTime, setWalkTime, setTotalCalories, setBarLabel, setBarData, setStepValue,
+					setTimeInBed, setWentToSleep, setEfficiency, setwakeUp, setSleepStagesData, setSleepLineData, setSleepLineLabel, setHomeTotalCalories, sleepLineDaysNumber
+				);
+				console.log(stepValue);
+				await homeFetch(date, setHomeLoading, setStepsHome, setStepLineLabels, setStepLineData, setMinHeartRate, setMaxHeartRate, setAvgHeartRate, setTotalHeartRate);
+			}
 		}
-	},[date, sleepLineDaysNumber])
+		fetchData();
+	},[date, sleepLineDaysNumber, loggedIn])
 
 	return (
 		<div>

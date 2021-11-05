@@ -2,7 +2,6 @@ import "./exerciseRing.css"
 import {Doughnut} from "react-chartjs-2"
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
-import { useEffect, useState } from "react";
 
 const ExerciseRing = (props) => {
 

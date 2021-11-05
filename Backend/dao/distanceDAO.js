@@ -26,8 +26,7 @@ export default class distanceDAO {
 
 	static async getAllDistances(req, res, next) {
 		try {
-			let newdistances = distance
-		  	return(newdistances)
+		  	return distance
 		} catch (e) {
 		  	console.log(`api, ${e}`)
 		  	res.status(500).json({ error: e })

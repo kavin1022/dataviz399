@@ -1,15 +1,10 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./home.css"
 import FeaturedInfo from "../../component/home/FeaturedInfo";
 import StepLineChart from "../../component/home/StepLineChart";
-import SummaryRadar from "../../component/home/SummaryRadar";
 import WaterRing from "../../component/home/WaterRing";
-import HappinessRing from "../../component/home/HappinessRing";
-import useFetch from "../../component/useFetch";
-import BackgroudGrey from "../../component/topBar/BackgroundGrey";
 import ExerciseHomeCom from "../../component/home/ExerciseHomeCom";
-import CircularProgress from '@material-ui/core/CircularProgress';
 import PurpleBack from "../../component/topBar/PurpleBack";
 import TopBar from "../../component/topBar/TopBar";
 

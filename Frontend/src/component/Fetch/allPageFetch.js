@@ -9,7 +9,7 @@ const allPageFetch = async(date,
         const update = (arr) => {
             let sum = 0;
             for (let i=0; i<arr.length; i++){
-                if (arr[i].dateTime.substring(0,10) == date){
+                if (arr[i].dateTime.substring(0,10) === date){
                     sum += arr[i].value;
                 }
             }
@@ -18,7 +18,7 @@ const allPageFetch = async(date,
 
         const sliceHomeTotalCalories = (arr) => {
             for (let i=0; i<arr.length; i++){
-                if (arr[i].dateTime == date){
+                if (arr[i].dateTime === date){
                     return (arr.slice(i));
                 }
             }
@@ -55,6 +55,7 @@ const allPageFetch = async(date,
                 else{
                     tempRunTime += x.value;
                 }
+                return 0
             })
             setRingLabel(tempRingLabel);
             setRingData(tempRingData);
@@ -65,9 +66,10 @@ const allPageFetch = async(date,
             let tempBarData = [0, 0];
             let tempTotalCalories = 0;
             totalButCalories.map(x => {
-                if(x.activityName == "Walk"){tempBarData[0] += x.calories;}
+                if(x.activityName === "Walk"){tempBarData[0] += x.calories;}
                 else{tempBarData[1] += x.calories};
                 tempTotalCalories += x.calories;
+                return 0
             })
             setTotalCalories(tempTotalCalories);
             setBarData(tempBarData);
@@ -114,6 +116,7 @@ const allPageFetch = async(date,
         sleepInfo.slice(dateIndex - sleepLineDaysNumber + 1, dateIndex + 1).map(x => {
             tempData.push(x.duration);
             tempLabel.push(x.dateTime.substring(5))
+            return 0;
         });
         setSleepLineData(tempData);
         setSleepLineLabel(tempLabel);

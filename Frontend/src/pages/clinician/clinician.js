@@ -27,7 +27,7 @@ const Clinician = (props) => {
                 <div id="cContentWrapper">
                     <div id="cRowOne">
                         <div id="patientSelector">
-                            <PatientSelector setDate={props.setDate} setHomeLoading={props.setHomeLoading} setChangingPatient={setChangingPatient} />
+                            <PatientSelector date={props.date} setDate={props.setDate} setHomeLoading={props.setHomeLoading} setChangingPatient={setChangingPatient} />
                         </div>
                         <div id="sleepSum">
                             <CSleepSum length={props.timeInBed} efficiency={props.efficiency} />

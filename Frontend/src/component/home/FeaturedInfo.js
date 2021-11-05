@@ -1,12 +1,8 @@
 import "./featuredInfo.css";
-import { useEffect, useState } from "react";
-import * as MdIcon from "react-icons/md";
+import { useEffect } from "react";
 import PercentageChange from "./percentageChange.js"
 
 const FeaturedInfo = (props) => {
-    
-    const positiveStyle = {color: "green", ffontSize: "1.4em", marginLeft:"10px", marginTop: "1px"};
-    const negativeStyle = {color: "red", fontSize: "1.4em", marginLeft:"10px", marginTop: "1px"};
 
     useEffect(() => {
         

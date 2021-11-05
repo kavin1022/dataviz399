@@ -26,8 +26,7 @@ export default class StepDAO {
 
 	static async getAllSteps(req, res, next) {
 		try {
-			let newSteps = step
-		  	return(newSteps)
+		  	return step
 		} catch (e) {
 		  	console.log(`api, ${e}`)
 		  	res.status(500).json({ error: e })
