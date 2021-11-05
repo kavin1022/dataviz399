@@ -4,7 +4,7 @@ This project is a software application with different dashboard interfaces for i
 
 ## Installation
 
-You'll need the latest LTS version of Node from https://nodejs.org/en/
+You'll need the latest LTS(16.13.0) version of Node from https://nodejs.org/en/
 
 
 
