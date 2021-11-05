@@ -20,6 +20,7 @@ function App() {
 
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [date, setDate] = useState("2020-03-31");
+	const [test, setTest] = useState("hello")
 	const [clinicianMode, setClinicianMode] = useState(false);
 
 	/* If Loading */
@@ -70,9 +71,9 @@ function App() {
 
 	useEffect(() => {
 		const fetchData = async() => {
-			console.log(loggedIn);
+			console.log(date);
+			console.log("2020-03-" + (date.substring(8) - 1))
 			if (loggedIn){
-				console.log("i ran")
 				setSleepLoading(true);
 				setHomeLoading(true);
 				setActivLoading(true);
@@ -82,8 +83,8 @@ function App() {
 					setDistanceValue, setExerciseValue, setCaloriesValue, setRingLabel, setRingData, setRunTime, setWalkTime, setTotalCalories, setBarLabel, setBarData, setStepValue,
 					setTimeInBed, setWentToSleep, setEfficiency, setwakeUp, setSleepStagesData, setSleepLineData, setSleepLineLabel, setHomeTotalCalories, sleepLineDaysNumber
 				);
-				console.log(stepValue);
 				await homeFetch(date, setHomeLoading, setStepsHome, setStepLineLabels, setStepLineData, setMinHeartRate, setMaxHeartRate, setAvgHeartRate, setTotalHeartRate);
+				
 			}
 		}
 		fetchData();

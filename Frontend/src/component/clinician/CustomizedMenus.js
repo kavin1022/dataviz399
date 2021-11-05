@@ -66,10 +66,10 @@ export default function CustomizedMenus(props) {
 		}
 		axios.post("http://localhost:8000/api/auth/login", body)
 		.then(res => {
-			console.log(res);
+			console.log(parseInt(props.date.substring(8)) - 1);
 			if (res.data.message === "login success"){
 				console.log(props.date)
-				props.setDate("2020-03-" + parseInt(props.date.substring(8)) - 1 );
+				props.setDate("2020-03-" + (props.date.substring(8) - 1));
 				props.setChangingPatient(false);
 				history.push("/clinician-summary")
 			}else{

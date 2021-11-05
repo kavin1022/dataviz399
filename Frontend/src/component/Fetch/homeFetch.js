@@ -13,8 +13,6 @@ const homeFetch = async(date, setHomeLoading, setStepsHome, setStepLineLabels, s
                 setStepLineLabels(temp.map(x => x.dateTime.slice(5)));
 		        setStepLineData(temp.map(x => x.value));
 		        setStepsHome(data[i].value);
-                setHomeLoading(false);
-                console.log("home loading finished")
             }
         }
         
@@ -33,6 +31,9 @@ const homeFetch = async(date, setHomeLoading, setStepsHome, setStepLineLabels, s
         setMaxHeartRate(Math.round(max));
         setAvgHeartRate(Math.round(total / 24));
         setTotalHeartRate(Math.round(total));
+
+        setHomeLoading(false);
+        console.log("home loading finished")
 
     })
 }

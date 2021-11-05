@@ -24,7 +24,7 @@ const CHeartRate = (props) => {
                 <div>
                     <p style={{fontSize: 20, paddingBottom: "10px"}}>Resting</p>
                     <div id="sleepHour">
-                        <p className="purpleSleepText">51</p> 
+                        <p className="purpleSleepText">{props.min + 11}</p> 
                         <p className="sleepSub">bpm</p>
                     </div>
                 </div>

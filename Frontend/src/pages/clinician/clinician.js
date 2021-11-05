@@ -21,7 +21,7 @@ const Clinician = (props) => {
             <BackgroudGrey/>
             <PurpleBack/>
             <div id="c">
-                <h1 id="welcomeMessage">Welcome Back, Doctor Yu-en Goh</h1>
+                <h1 id="welcomeMessage">Welcome Back</h1>
                 <h4 id="patientReminder">Take a look at the latest updates for your patients</h4>
 
                 <div id="cContentWrapper">
