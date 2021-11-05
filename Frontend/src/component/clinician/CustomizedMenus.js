@@ -69,7 +69,7 @@ export default function CustomizedMenus(props) {
 			console.log(parseInt(props.date.substring(8)) - 1);
 			if (res.data.message === "login success"){
 				console.log(props.date)
-				if (props.date != "2020-03-31"){
+				if (props.date !== "2020-03-31"){
 					props.setDate("2020-03-31");
 				}else{
 					props.setDate("2020-03-30");
