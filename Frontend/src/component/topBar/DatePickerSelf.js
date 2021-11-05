@@ -13,7 +13,12 @@ const DatePickerSelf = (props) => {
                     value={props.date}
                     format="YYYY-MM-DD"
                     onChange={(newValue) => {
-                        props.setDate(format(newValue, "yyyy-MM-dd")); 
+                        const max = new Date("March 31, 2020 23:59:59")
+                        if(newValue > max){
+                            alert("Data doesn't exist, please select a date between 2019-11-01 to 2020-03-31")
+                        }else{
+                            props.setDate(format(newValue, "yyyy-MM-dd")); 
+                        }
                     }}
                     renderInput={(params) => <TextField {...params} />}
                 />

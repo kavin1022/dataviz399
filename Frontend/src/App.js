@@ -71,8 +71,6 @@ function App() {
 
 	useEffect(() => {
 		const fetchData = async() => {
-			console.log(date);
-			console.log("2020-03-" + (date.substring(8) - 1))
 			if (loggedIn){
 				setSleepLoading(true);
 				setHomeLoading(true);

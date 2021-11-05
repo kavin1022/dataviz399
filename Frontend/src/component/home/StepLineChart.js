@@ -63,7 +63,15 @@ const StepLineChart = (props) => {
          		<CalendarPicker 
 					date={new Date(Date.parse(props.date))} 
 					dateFormat="YYYY-MM-DD" 
-					onChange={(newValue) => {props.setDate(format(newValue, "yyyy-MM-dd"));}}
+					onChange={(newValue) => {
+						const max = new Date("March 31, 2020 23:59:59")
+						const min = new Date("November 01, 2019 00:00:00")
+                        if(newValue > max || newValue < min){
+                            alert("Data doesn't exist, please select a date between 2019-11-01 to 2020-03-31")
+                        }else{
+                            props.setDate(format(newValue, "yyyy-MM-dd")); 
+                        }
+					}}
 					renderInput={(params) => <TextField {...params} />}
 				/>
     		</LocalizationProvider>
