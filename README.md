@@ -10,7 +10,7 @@ You'll need the latest LTS(16.13.0) version of Node from https://nodejs.org/en/
 
 All following command are run with Powershell (Windows), Terminal (Linux), and Terminal (MacOS)
 
-### Method 1 - Script Files
+### Method 1 - Script Files (Windows Only)
 
 This Github repo comes with two prewritten Powershell script file for Windows that installs and launch the application automatically. 
 
@@ -18,7 +18,7 @@ Please run **install.ps1** by right clicking on the file and then selecting "run
 
 Once the dependency are installed, rightclick on **start.ps1** and select "run with Powershell" to start the server and client. 
 
-### Method 2 - PowerShell/Terminal
+### Method 2 - PowerShell/Terminal (Windows/Linux/MacOS)
 
 If you're installing this application for the first time, please run
 
